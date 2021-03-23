@@ -1,0 +1,55 @@
+.plan-title {
+  display: flex;
+  justify-content: center;
+  margin-top: 20rpx;
+}
+
+.title {
+  font-size: larger;
+}
+
+.plan-imgs {
+  display: flex;
+  justify-content: center;
+}
+
+.swipper-body {
+  width: 90%;
+  margin-top: 20rpx;
+}
+
+.swiper-img {
+  border-radius: 20rpx;
+}
+
+.plan-details {
+  margin-top: 20rpx;
+}
+
+.timeline {
+  margin-top: 30rpx;
+}
+
+.time-item {
+  width: 90%;
+  margin-left: 4%;
+  padding: 1%;
+  border: 1px solid #CCCCCC;
+  border-radius: 20rpx;
+  box-shadow: 10rpx 10rpx 10rpx #cdcfcf;
+  margin-bottom: 40rpx;
+}
+
+.plan-refresh-btu {
+  margin-bottom: 30rpx;
+}
+
+.plan-declaration {
+  width: 80%;
+  background-color: #edebeb;
+  margin-left: 5%;
+  border-radius: 20rpx;
+  font-size: smaller;
+  margin-bottom: 20rpx;
+  padding: 5%;
+}

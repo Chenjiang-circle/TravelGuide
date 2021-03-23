@@ -1,0 +1,62 @@
+<!--路线详情页-->
+<view class="plan-body">
+  <!-- 路线标题 -->
+  <view class="plan-title">
+    <text class="title">路线标题</text>
+  </view>
+  <!-- 景点展示（轮播图） -->
+  <view class="plan-imgs">
+    <swiper autoplay="true" interval="3000" circular="true" class="swipper-body">
+      <swiper-item class="swiper-img">
+        <image src="https://img02.sogoucdn.com/app/a/100520146/4E454FCA94020965D56A412504664DBC" mode="heightFix" />
+      </swiper-item>
+      <swiper-item class="swiper-img">
+        <image src="https://img01.sogoucdn.com/app/a/100520146/8E2A9BD234F7969D0BE7F8B771DB31A6" mode="heightFix" />
+      </swiper-item>
+    </swiper>
+  </view>
+  <!-- 路线详细信息 -->
+  <view class="plan-details">
+    <!-- 路线详细信息——时间轴 -->
+    <view class="timeline">
+      <view class='timeAxisView'>
+        <timeAxis isCurent="{{true}}" axisTitle="项目1" axisTime="2019-05-21 21:09:09" />
+        <timeAxis axisTitle="项目2" axisTime="2019-05-21 21:09:09" />
+        <timeAxis axisTitle="项目3" textArray="{{textArray}}" axisTime="2019-05-21 21:09:09" />
+        <timeAxis axisTitle="项目4" axisTime="2019-05-21 21:09:09" isShowLeftLine="{{false}}" />
+      </view>
+    </view>
+    <!-- 路线详细信息——具体路线细节 -->
+    <view class="time-item">
+      <view class="plan-item">
+        <view class="plan-item-title">
+          <text>当前项目：</text>
+          <text>项目名称</text>
+          <text>(评分)</text>
+        </view>
+        <view class="plan-item-position">
+          项目地点（显示距离）
+        </view>
+        <view class="plan-item-time">
+          <text>预计游玩时长：</text>
+          <text>游玩时长</text>
+        </view>
+        <view class="plan-item-info">
+          <view>
+            <text>景点票价：</text>
+            <text>票价</text>
+          </view>
+          <view>
+            <text>景点开放时间：</text>
+            <text>开放时间</text>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <!-- 会员功能 -->
+  <button type="primary" class="plan-refresh-btu">VIP路线监测</button>
+  <view class="plan-declaration">
+    <text>路线声明(VIP功能介绍等)</text>
+  </view>
+</view>

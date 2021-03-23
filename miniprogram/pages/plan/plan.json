@@ -1,0 +1,5 @@
+{
+  "usingComponents": {
+    "timeAxis": "/components/timeAxis/timeAxis"
+  }
+}

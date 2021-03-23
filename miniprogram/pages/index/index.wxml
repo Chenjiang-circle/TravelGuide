@@ -1,0 +1,75 @@
+<view class="body">
+  <swiper autoplay="true" interval="3000" circular="true" class="swipper-body">
+    <!-- 广告位 -->
+    <swiper-item class="swiper-img">
+      <image src="https://i.loli.net/2021/03/22/hDMZOdK9uzbrp71.jpg" mode="heightFix" />
+    </swiper-item>
+    <swiper-item class="swiper-img">
+      <image src="https://i.loli.net/2021/03/22/hDMZOdK9uzbrp71.jpg" mode="heightFix" />
+    </swiper-item>
+  </swiper>
+  <!-- 推荐内容 -->
+  <view class="recommendation-body">
+    <!-- 热门路线推荐 -->
+    <view class="hot-plan">
+      <view class="hot-plan-title">热门路线推荐</view>
+      <!-- 一个推荐卡片 -->
+      <view class="card">
+        <!-- 放置图片 -->
+        <view class="card-img-box">
+          <image src="https://www.hualigs.cn/image/6054993ec8e5d.jpg" class="card-img" mode="widthFix" />
+        </view>
+        <!-- 放置文字信息 -->
+        <view class="card-info-box">
+          <view>
+            <view class="card-info-title">标题信息</view>
+            <view class="card-info-content">内容内容内容内容内容内容内容内容内容</view>
+          </view>
+        </view>
+      </view>
+      <view class="card">
+        <!-- 放置图片 -->
+        <view class="card-img-box">
+          <image src="https://www.hualigs.cn/image/6054993ec8e5d.jpg" class="card-img" mode="widthFix" />
+        </view>
+        <!-- 放置文字信息 -->
+        <view class="card-info-box">
+          <view>
+            <view class="card-info-title">标题信息</view>
+            <view class="card-info-content">内容内容内容内容内容内容内容内容内容</view>
+          </view>
+        </view>
+      </view>
+      <view class="card">
+        <!-- 放置图片 -->
+        <view class="card-img-box">
+          <image src="https://www.hualigs.cn/image/6054993ec8e5d.jpg" class="card-img" mode="widthFix" />
+        </view>
+        <!-- 放置文字信息 -->
+        <view class="card-info-box">
+          <view>
+            <view class="card-info-title">标题信息</view>
+            <view class="card-info-content">内容内容内容内容内容内容内容内容内容</view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <!-- 景点推荐&简介 -->
+    <view class="hot-attractions">
+      <view class="hot-plan-title">热门景点推荐</view>
+      <view class="card" data-index="{{item._id}}" wx:for="{{hot_attraction}}" wx:key="index" bindtap="navigateToInfo">
+        <!-- 放置图片 -->
+        <view class="card-img-box">
+          <image src="{{item.images[0]}}" class="card-img" mode="widthFix" />
+        </view>
+        <!-- 放置文字信息 -->
+        <view class="card-info-box">
+          <view>
+            <view class="card-info-title">{{item.name}}</view>
+            <view class="card-info-content">{{item.introduction}}</view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

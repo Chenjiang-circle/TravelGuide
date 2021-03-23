@@ -1,0 +1,66 @@
+.body {
+  background-color: #BBDEFB;
+}
+
+.swipper-body {
+  margin-bottom: 30rpx;
+}
+
+.swiper-img {
+  border-radius: 25rpx;
+}
+
+.hot-plan-title {
+  margin-left: 5%;
+}
+
+.card {
+  width: 90%;
+  margin-left: 5%;
+  margin-top: 20rpx;
+  height: 390rpx;
+  background: #448AFF;
+  border-radius: 10rpx;
+  box-shadow: 5px 5px 5px #cdcfcf;
+  display: flex;
+}
+
+.card-img-box {
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card-info-box {
+  width: 50%;
+  display: flex;
+  align-items: center;
+  padding-right: 20rpx;
+}
+
+.card-img {
+  width: 80%;
+  border-radius: 15rpx;
+}
+
+.card-info-title {
+  font-size: larger;
+  color: #FFFFFF;
+}
+
+.card-info-content {
+  margin-top: 20rpx;
+  font-size: small;
+  color: #212121;
+  display:-webkit-box;
+  /* 表示几行后超出隐藏 */
+  -webkit-line-clamp: 6;
+  /* 超出隐藏 */
+  overflow:hidden;
+  /*超出显示为省略号*/
+  text-overflow:ellipsis;
+  -webkit-box-orient:vertical;
+  /*强制英文单词自动换行*/
+  word-break:break-all;
+}

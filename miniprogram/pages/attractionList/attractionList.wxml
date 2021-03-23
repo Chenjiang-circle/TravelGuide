@@ -1,0 +1,7 @@
+<!--pages/attractionList/attractionList.wxml-->
+<text>景点列表页面</text>
+<view class="body">
+  <view class="head"></view>
+  <view class="cards"></view>
+  <view class="tail"></view>
+</view>

@@ -1,0 +1,61 @@
+{
+  "pages": [
+    "pages/attractionList/attractionList",
+    "pages/index/index",
+    "pages/userCenter/userCenter",
+    "pages/userCustom/userCustom",
+    "pages/attractions/attractions",
+    
+    "pages/plan/plan"
+  ],
+  "window": {
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#2196F3",
+    "backgroundColor": "#BBDEFB",
+    "navigationBarTitleText": "旅游",
+    "navigationBarTextStyle":"black",
+    "enablePullDownRefresh": true
+  },
+  "tabBar": {
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "/icon/首页.png",
+        "selectedIconPath": "/icon/首页_.png"
+      },
+      {
+        "pagePath": "pages/userCustom/userCustom",
+        "text": "定制",
+        "iconPath": "/icon/定制.png",
+        "selectedIconPath": "/icon/定制_.png"
+      },
+      {
+        "pagePath": "pages/userCenter/userCenter",
+        "text": "我的",
+        "iconPath": "/icon/我的.png",
+        "selectedIconPath": "/icon/我的_.png"
+      }
+    ],
+    "color": "#757575",
+    "selectedColor": "#2196F3",
+    "borderStyle": "black"
+  },
+  "plugins": {
+    "chooseLocation": {
+      "version": "1.0.5",
+      "provider": "wx76a9a06e5b4e693e"
+    },
+    "routePlan": {
+      "version": "1.0.12",
+      "provider": "wx50b5593e81dd937a"
+    }
+  },
+  "permission": {
+    "scope.userLocation": {
+      "desc": "你的位置信息将用于小程序定位"
+    }
+  },
+  "sitemapLocation": "sitemap.json",
+  "style": "v2"
+}

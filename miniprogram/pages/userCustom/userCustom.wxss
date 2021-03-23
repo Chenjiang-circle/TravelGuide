@@ -1,0 +1,11 @@
+/* pages/userCustom/userCustom.wxss */
+.user-input-box {
+  display: flex;
+}
+
+.user-input {
+  width: 30%;
+  border: 1px solid thistle;
+  border-radius: 20rpx;
+  margin-right: 15rpx;
+}

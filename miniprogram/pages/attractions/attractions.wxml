@@ -1,0 +1,15 @@
+<!--景点详情页-->
+<view class="attraction-body">
+  <!-- 景点介绍卡片 -->
+  <view class="attraction-card">
+    <!-- 景点照片展示 -->
+    <view class="attraction-img">
+      <image src="{{attarctions.images[0]}}" mode="widthFix"  class="attraction-image"/>
+    </view>
+    <!-- 景点文字介绍 -->
+    <view class="attraction-info">
+      <view class="attraction-name">{{attarctions.name}}</view>
+      <view class="attraction-content">{{attarctions.introduction}}</view>
+    </view>
+  </view>
+</view>

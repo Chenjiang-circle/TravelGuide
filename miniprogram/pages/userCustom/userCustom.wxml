@@ -1,0 +1,47 @@
+<text>用户旅游线路定制中心</text>
+<view class="custom-body">
+  <view class="custom-title">私人定制</view>
+  <view class="custom-items">
+    <!-- 用户提交的表单 -->
+    <form action="">
+      <view class="page-section-title">旅行人数：</view>
+      <radio-group name="travelNum">
+        <label><radio value="1" />1人</label>
+        <label><radio value="2" />2人</label>
+        <label><radio value="3" />3人</label>
+        <view></view>
+        <label><radio value="4" />4人</label>
+        <label><radio value="5" />5人</label>
+        <label><radio value="6" />6人</label>
+        <view></view>
+        <label><radio value="7" />7人</label>
+        <label><radio value="8" />8人</label>
+        <label><radio value="9" />9人</label>
+      </radio-group>
+      <view class="page-section-title">旅行方式：</view>
+      <radio-group name="travelMethod">
+        <label><radio value="1" />徒步</label>
+        <label><radio value="2" />骑行</label>
+        <label><radio value="3" />自驾</label>
+        <label><radio value="4" />公交</label>
+      </radio-group>
+      <view class="page-section-title">游玩天数：</view>
+      <radio-group name="travelMethod">
+        <label><radio value="0" />半天</label>
+        <label><radio value="1" />一天</label>
+        <label><radio value="2" />两天</label>
+        <view></view>
+        <label><radio value="3" />三天</label>
+        <label><radio value="4" />四天</label>
+        <label><radio value="5" />五天</label>
+        <view></view>
+        <label><radio value="6" />六天</label>
+        <label><radio value="7" />七天</label>
+      </radio-group>
+      <view class="page-section-title">旅行预算：</view>
+      <view class="user-input-box">
+        <input type="number" name="travalAccount" class="user-input" />元
+      </view>
+    </form>
+  </view>
+</view>

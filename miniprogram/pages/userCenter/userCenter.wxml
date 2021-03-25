@@ -2,10 +2,10 @@
   <view class="avatar-wrapper">
     <view>
       <view class="avatar">
-        <image style="border-radius:50%;" src="{{userinfo.avatarUrl ? userinfo.avatarUrl:'/icon/用户.png'}}"></image>
+        <image style="border-radius:50%;" src="{{userInfo.avatarUrl ? userInfo.avatarUrl:'/icon/用户.png'}}"></image>
       </view>
       <view class="text">
-        <text wx:if="{{userinfo.nickName}}">{{userinfo.nickName}}</text>
+        <text wx:if="{{userInfo.nickName}}">{{userInfo.nickName}}</text>
         <text wx:else bindtap="toLogin">注册 / 登录</text>
       </view>
       <view class="text">

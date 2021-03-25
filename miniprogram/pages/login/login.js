@@ -66,7 +66,7 @@ Page({
   login(e) {
     // console.log(e);
     var app = getApp();
-    app.userInfo = e.detail.userInfo;
+    app.globalData.userInfo = e.detail.userInfo;
     wx.cloud.callFunction({
       name: "login",
       data: app.userInfo

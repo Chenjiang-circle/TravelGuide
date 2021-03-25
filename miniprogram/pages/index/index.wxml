@@ -75,4 +75,6 @@
       </view>
     </view>
   </view>
+  <!-- 底部 -->
+  <view class="tail"></view>
 </view>

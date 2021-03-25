@@ -75,3 +75,7 @@
   /*强制英文单词自动换行*/
   word-break:break-all;
 }
+
+.tail {
+  height: 60rpx;
+}

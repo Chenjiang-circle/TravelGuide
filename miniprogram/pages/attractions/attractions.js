@@ -12,6 +12,9 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    wx.showLoading({
+      title: '页面加载中...',
+    });
     wx.cloud.callFunction({
       name: "getAcctractionInfo",
       data: {
@@ -21,7 +24,8 @@ Page({
       this.setData({
         attarctions: res.result.data
       })
-    })
+    });
+    wx.hideLoading();
   },
 
   /**

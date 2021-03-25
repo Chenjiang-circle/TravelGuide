@@ -1,11 +1,10 @@
 {
   "pages": [
-    "pages/attractionList/attractionList",
     "pages/index/index",
     "pages/userCenter/userCenter",
     "pages/userCustom/userCustom",
     "pages/attractions/attractions",
-    
+    "pages/attractionList/attractionList",
     "pages/plan/plan"
   ],
   "window": {

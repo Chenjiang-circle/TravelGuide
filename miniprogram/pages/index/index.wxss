@@ -10,8 +10,19 @@
   border-radius: 25rpx;
 }
 
+.hot-attractions {
+  margin-top: 50rpx;
+}
+
 .hot-plan-title {
-  margin-left: 5%;
+  width: 90%;
+  padding-left: 5%;
+  padding-right: 5%;
+}
+
+.more-btn {
+  float: right;
+  color: gray;
 }
 
 .card {

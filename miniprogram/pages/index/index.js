@@ -14,13 +14,13 @@ Page({
    */
   onLoad: function (options) {
     wx.cloud.callFunction({
-      name: "indexGetHotAcctraction"
-    })
-    .then(res=>{
-      this.setData({
-        hot_attraction: res.result.data
+        name: "indexGetHotAcctraction"
       })
-    });
+      .then(res => {
+        this.setData({
+          hot_attraction: res.result.data
+        })
+      });
   },
 
   /**
@@ -89,6 +89,12 @@ Page({
     var url = "/pages/attractions/attractions?id=" + res.currentTarget.dataset.index;
     wx.navigateTo({
       url: url,
-    })
+    });
+  },
+  toAcctractionList() {
+    // 跳转到景点列表页面
+    wx.navigateTo({
+      url: "/pages/attractionList/attractionList",
+    });
   }
 })

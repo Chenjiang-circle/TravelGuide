@@ -56,7 +56,10 @@
     </view>
     <!-- 景点推荐&简介 -->
     <view class="hot-attractions">
-      <view class="hot-plan-title">热门景点推荐</view>
+      <view class="hot-plan-title">
+        <text>热门景点推荐</text>
+        <text class="more-btn" bindtap="toAcctractionList">more></text>
+      </view>
       <view class="card" data-index="{{item._id}}" wx:for="{{hot_attraction}}" wx:key="index" bindtap="navigateToInfo">
         <!-- 放置图片 -->
         <view class="card-img-box">

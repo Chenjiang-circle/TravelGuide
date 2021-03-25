@@ -5,6 +5,7 @@
     "pages/userCustom/userCustom",
     "pages/attractions/attractions",
     "pages/attractionList/attractionList",
+    "pages/login/login",
     "pages/plan/plan"
   ],
   "window": {

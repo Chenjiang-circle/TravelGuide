@@ -5,14 +5,21 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    attractions: []
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    // 从数据库中调用数据
+    wx.cloud.callFunction({
+      name: "getAllAcctractionsInfo"
+    }).then(res=>{
+      this.setData({
+        attractions: res.result.data
+      })
+    })
   },
 
   /**
@@ -62,5 +69,12 @@ Page({
    */
   onShareAppMessage: function () {
 
+  },
+  navigateToInfo(res) {
+    // 跳转到景点详情页面
+    var url = "/pages/attractions/attractions?id=" + res.currentTarget.dataset.index;
+    wx.navigateTo({
+      url: url,
+    })
   }
 })

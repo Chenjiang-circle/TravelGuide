@@ -1,7 +1,21 @@
-<!--pages/attractionList/attractionList.wxml-->
-<text>景点列表页面</text>
 <view class="body">
-  <view class="head"></view>
-  <view class="cards"></view>
+  <view class="head">
+    <text>开封景点列表</text>
+  </view>
+  <view class="cards">
+    <view class="card" data-index="{{item._id}}" wx:for="{{attractions}}" wx:key="index" bindtap="navigateToInfo">
+      <!-- 放置图片 -->
+      <view class="card-img-box">
+        <image src="{{item.images[0]}}" class="card-img" mode="widthFix" />
+      </view>
+      <!-- 放置文字信息 -->
+      <view class="card-info-box">
+        <view>
+          <view class="card-info-title">{{item.name}}</view>
+          <view class="card-info-content">{{item.introduction}}</view>
+        </view>
+      </view>
+    </view>
+  </view>
   <view class="tail"></view>
 </view>

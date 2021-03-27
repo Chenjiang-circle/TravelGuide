@@ -19,21 +19,17 @@
       </radio-group>
       <view class="page-section-title">中意景点：</view>
       <checkbox-group name="attractions">
-        <label><checkbox value="1" checked="true" />清明上河园</label>
+        <view class="attractions_line">自然景点：</view>
+        <label><checkbox value="1" />铁塔公园</label>
+        <view class="attractions_line">人文景点：</view>
         <label><checkbox value="2" />龙亭公园</label>
-        <label><checkbox value="3" />包公祠</label>
+        <label><checkbox value="3" checked="true" />清明上河园</label>
         <label><checkbox value="4" />大相国寺</label>
         <label><checkbox value="5" />万岁山·大宋武侠城</label>
-        <label><checkbox value="6" />铁塔公园</label>
+        <label><checkbox value="6" />包公祠</label>
+        <label><checkbox value="7" />天波杨府</label>
+        <label><checkbox value="8" />中国翰园碑林</label>
       </checkbox-group>
-      <view class="page-section-title">旅行方式：</view>
-      <radio-group name="travelMethod">
-        <label><radio value="1" />徒步</label>
-        <label><radio value="2" />骑行</label>
-        <view></view>
-        <label><radio value="3" />自驾</label>
-        <label><radio value="4" checked="true" />公交</label>
-      </radio-group>
       <view class="page-section-title">游玩天数：</view>
       <radio-group name="travelMethod">
         <label><radio value="0" />半天</label>

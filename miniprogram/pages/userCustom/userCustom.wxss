@@ -50,3 +50,8 @@ button {
 .custom-tail {
   height: 60rpx;
 }
+
+.attractions_line {
+  margin-top: 20rpx;
+  margin-bottom: 20rpx;
+}

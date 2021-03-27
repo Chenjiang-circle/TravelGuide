@@ -21,20 +21,20 @@ Page({
           hot_attraction: res.result.data
         })
       });
-    var app = getApp();
-    if (app.globalData.userInfo) {
-      console.log("yes");
-    } else {
-      wx.showModal({
-        title: "登录提醒",
-        content: "您尚未登录，请点击确定前往登录页面",
-        showCancel: false
-      }).then(res => {
-        wx.navigateTo({
-          url: '/pages/login/login',
-        })
-      })
-    }
+    // var app = getApp();
+    // if (app.globalData.userInfo) {
+    //   console.log("yes");
+    // } else {
+    //   wx.showModal({
+    //     title: "登录提醒",
+    //     content: "您尚未登录，请点击确定前往登录页面",
+    //     showCancel: false
+    //   }).then(res => {
+    //     wx.navigateTo({
+    //       url: '/pages/login/login',
+    //     })
+    //   })
+    // }
   },
 
   /**

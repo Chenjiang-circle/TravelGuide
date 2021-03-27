@@ -1,6 +1,38 @@
 /* pages/userCustom/userCustom.wxss */
+.custom-body {
+  background-color: #BBDEFB;
+}
+
+.custom-title {
+  text-align: center;
+  font-size: xx-large;
+  padding-top: 50rpx;
+  padding-bottom: 50rpx;
+}
+
+.custom-items {
+  margin-left: 10%;
+  width: 80%;
+}
+
+.page-section-title {
+  background-color: #2196F3;
+  font-size: large;
+  border-radius: 15rpx;
+  padding: 15rpx 15rpx 15rpx 20rpx;
+  margin-top: 15rpx;
+  margin-bottom: 15rpx;
+}
+
 .user-input-box {
   display: flex;
+}
+
+label {
+  display: inline-block;
+  margin-right: 55rpx;
+  padding-bottom: 15rpx;
+  padding-top: 15rpx;
 }
 
 .user-input {
@@ -8,4 +40,13 @@
   border: 1px solid thistle;
   border-radius: 20rpx;
   margin-right: 15rpx;
+}
+
+button {
+  margin-top: 20rpx;
+  margin-bottom: 20rpx;
+}
+
+.custom-tail {
+  height: 60rpx;
 }

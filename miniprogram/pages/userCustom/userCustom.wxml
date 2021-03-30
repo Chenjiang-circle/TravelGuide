@@ -4,19 +4,18 @@
     <!-- 用户提交的表单 -->
     <form catchsubmit="formSubmit">
       <view class="page-section-title">旅行人数：</view>
-      <radio-group name="travelNum">
-        <label><radio value="1" checked="true" />1人</label>
-        <label><radio value="2" />2人</label>
-        <label><radio value="3" />3人</label>
-        <view></view>
-        <label><radio value="4" />4人</label>
-        <label><radio value="5" />5人</label>
-        <label><radio value="6" />6人</label>
-        <view></view>
-        <label><radio value="7" />7人</label>
-        <label><radio value="8" />8人</label>
-        <label><radio value="9" />9人</label>
-      </radio-group>
+      <view class="travel-number-box">
+        <view class="travel-number-titile">成人(全价票)：</view>
+        <input class="travel-number-input" type="number" name="adults" value="1"/>
+      </view>
+      <view class="travel-number-box">
+        <view class="travel-number-titile">学生(半价票)：</view>
+        <input class="travel-number-input" type="number" name="students" value="1"/>
+      </view>
+      <view class="travel-number-box">
+        <view class="travel-number-titile">儿童(免门票)：</view>
+        <input class="travel-number-input" type="number" name="children" value="1"/>
+      </view>
       <view class="page-section-title">中意景点：</view>
       <checkbox-group name="attractions">
         <view class="attractions_line">自然景点：</view>

@@ -12,7 +12,7 @@
     "backgroundTextStyle":"light",
     "navigationBarBackgroundColor": "#2196F3",
     "backgroundColor": "#BBDEFB",
-    "navigationBarTitleText": "旅游",
+    "navigationBarTitleText": "汴旅之约",
     "navigationBarTextStyle":"black",
     "enablePullDownRefresh": true
   },

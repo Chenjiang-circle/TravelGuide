@@ -1,4 +1,21 @@
 // pages/userCustom/userCustom.js
+function Custom(obj) {
+  this.obj = obj;
+  this.countDays = function () {
+    return this.obj.travelDays / 0.5;
+  }
+}
+const custom = {
+  /**
+   * 计算用户游玩所需要的半天数
+   * @param days 
+   * @return number类型的值，表示需要花费的半天数
+   */
+  countDays: function(days) {
+    return days/0.5;
+  },
+
+}
 Page({
 
   /**
@@ -65,5 +82,6 @@ Page({
   },
   formSubmit(e) {
     console.log(e.detail.value);
+    // console.log(custom.countDays(e.detail.value.travelDays));
   }
 })

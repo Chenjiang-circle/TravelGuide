@@ -16,22 +16,40 @@
         <view class="travel-number-titile">儿童(免门票)：</view>
         <input class="travel-number-input" type="number" name="children" value="1"/>
       </view>
+      <view class="travel-number-box">
+        <view class="travel-number-titile">特殊群体：</view>
+        <input class="travel-number-input" type="number" name="specialPeople" value="1"/>
+      </view>
       <view class="page-section-title">中意景点：</view>
       <checkbox-group name="attractions">
         <view class="attractions_line">自然景点：</view>
-        <label><checkbox value="1" />铁塔公园</label>
+        <label><checkbox value="铁塔公园" />铁塔公园</label>
         <view class="attractions_line">人文景点：</view>
-        <label><checkbox value="2" />龙亭公园</label>
-        <label><checkbox value="3" checked="true" />清明上河园</label>
-        <label><checkbox value="4" />大相国寺</label>
-        <label><checkbox value="5" />万岁山·大宋武侠城</label>
-        <label><checkbox value="6" />包公祠</label>
-        <label><checkbox value="7" />天波杨府</label>
-        <label><checkbox value="8" />中国翰园碑林</label>
+        <label><checkbox value="龙亭公园" />龙亭公园</label>
+        <label><checkbox value="清明上河园" checked="true" />清明上河园</label>
+        <label><checkbox value="大相国寺" />大相国寺</label>
+        <label><checkbox value="万岁山" />万岁山·大宋武侠城</label>
+        <label><checkbox value="包公祠" />包公祠</label>
+        <label><checkbox value="天波杨府" />天波杨府</label>
+        <label><checkbox value="中国翰园碑林" />中国翰园碑林</label>
+      </checkbox-group>
+      <checkbox-group name="snacks">
+        <view class="page-section-title">特色小吃：</view>
+        <view class="attractions_line">网红小吃：</view>
+        <label><checkbox value="1" checked="true" />网红小吃一号</label>
+        <label><checkbox value="2" />网红小吃2号</label>
+        <view class="attractions_line">开封特色：</view>
+        <label><checkbox value="2" />特色小吃1</label>
+        <label><checkbox value="3" checked="true" />特色小吃2</label>
+        <label><checkbox value="4" />特色小吃3</label>
+        <label><checkbox value="5" />特色小吃4</label>
+        <label><checkbox value="6" />特色小吃5</label>
+        <label><checkbox value="7" />特色小吃6</label>
+        <label><checkbox value="8" />特色小吃7</label>
       </checkbox-group>
       <view class="page-section-title">游玩天数：</view>
-      <radio-group name="travelMethod">
-        <label><radio value="0" />半天</label>
+      <radio-group name="travelDays">
+        <label><radio value="0.5" />半天</label>
         <label><radio value="1" />一天</label>
         <label><radio value="2" checked="true" />两天</label>
         <view></view>
@@ -42,6 +60,14 @@
         <label><radio value="6" />六天</label>
         <label><radio value="7" />七天</label>
       </radio-group>
+      <view class="page-section-title">住宿倾向：</view>
+      <checkbox-group name="hotel_type">
+        <label><checkbox value="商务酒店" checked="true">商务酒店</checkbox></label>
+        <label><checkbox value="快捷酒店" checked="true">快捷酒店</checkbox></label>
+        <label><checkbox value="高级酒店">高级酒店</checkbox></label>
+        <label><checkbox value="民宿">民宿</checkbox></label>
+        <label><checkbox value="青旅">青旅</checkbox></label>
+      </checkbox-group>
       <view class="page-section-title">旅行预算：</view>
       <view class="user-input-box">
         <input type="number" name="travalAccount" class="user-input" value="0" />元

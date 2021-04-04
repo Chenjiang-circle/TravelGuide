@@ -1,20 +1,76 @@
 // pages/userCustom/userCustom.js
 function Custom(obj) {
   this.obj = obj;
+  this.demand = {};
+  this.attractions = [];
+  this.hasPlay = [];
+  this.attractionsInfo = [];
+  this.plan = {
+    "details": []
+  };
+
+  /**
+   * 计算旅客游玩的半天数
+   */
   this.countDays = function () {
     return this.obj.travelDays / 0.5;
   }
-}
-const custom = {
-  /**
-   * 计算用户游玩所需要的半天数
-   * @param days 
-   * @return number类型的值，表示需要花费的半天数
-   */
-  countDays: function(days) {
-    return days/0.5;
-  },
 
+  /**
+   * 将已游玩的景点加入hasPlay数组中
+   * @param {Array} attractionName 
+   */
+  this.addHasPlay = function (attractionName) {
+    return this.hasPlay.push(attractionName);
+  }
+
+  /**
+   * 计算景点A到景点B的距离
+   * @param {String} placeA 景点A
+   * @param {String} placeB 景点B
+   */
+  this.getDistance = function (placeA, placeB) {
+    return 0.0
+  }
+
+  /**
+   * 计算旅客所需支付的门票费用
+   */
+  this.countTicketPrice = function () {
+    var price = 0.0;
+    return price;
+  }
+
+  /**
+   * 获取旅客所要游玩的所有景点的信息
+   */
+  this.getAttractionInfo = function () {
+    
+  }
+
+  /**
+   * 对游客中意景点进行排序。对attractions进行操作。
+   */
+  this.sortAttractions = function () {
+    
+  }
+
+  /**
+   * 对游客的一个半天时间进行规划，返回一个计划对象
+   * @param {number} days 旅客计划游玩半天数（以半天为单位）
+   * @param {number} remainDays 旅客剩余游玩半天数
+   */
+  this.makeSmallPlan = function (days, remainDays) {
+    var nowDay = days - remainDays;
+    var day = {
+      nowday : {
+        "breakfirst": "",
+        "attraction": [],
+        "spend_time": 0
+      }
+    };
+    return day;
+  }
 }
 Page({
 

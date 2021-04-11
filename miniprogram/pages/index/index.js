@@ -111,4 +111,12 @@ Page({
       url: "/pages/attractionList/attractionList",
     });
   }
+  // deleteData() {
+  //   console.log("diaoyong");
+  //   wx.cloud.callFunction({
+  //     name: "demo"
+  //   }).then(res => {
+  //     alert("删除完成！");
+  //   })
+  // }
 })

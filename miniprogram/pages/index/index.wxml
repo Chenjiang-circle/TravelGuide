@@ -75,6 +75,7 @@
       </view>
     </view>
   </view>
+  <!-- <button type="primary" bindtap="deleteData">删除数据</button> -->
   <!-- 底部 -->
   <view class="tail"></view>
 </view>

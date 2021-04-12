@@ -4,12 +4,17 @@
   <view class="attraction-card">
     <!-- 景点照片展示 -->
     <view class="attraction-img">
-      <image src="{{attarctions.images[0]}}" mode="widthFix"  class="attraction-image"/>
+      <image src="{{attractions.images[0]}}" mode="widthFix"  class="attraction-image"/>
     </view>
     <!-- 景点文字介绍 -->
     <view class="attraction-info">
-      <view class="attraction-name">{{attarctions.name}}</view>
-      <view class="attraction-content">{{attarctions.introduction}}</view>
+      <view class="attraction-name">{{attractions.name}}</view>
+      <view class="attraction-level">{{attractions.level}}</view>
+      <view class="attraction-content">{{attractions.introduction}}</view>
+      <view class="attraction-priceInfo">票价信息：{{attractions.price_info}}</view>
+      <view class="attraction-playTime">建议游玩时间：{{attractions.playtime}}</view>
+      <view class="attraction-location">地址：{{attractions.location_detail}}</view>
+      <view class="attraction-phone">联系电话：{{attractions.phone}}</view>
     </view>
   </view>
 </view>

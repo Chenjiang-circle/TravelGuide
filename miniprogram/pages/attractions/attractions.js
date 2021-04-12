@@ -5,7 +5,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    attarctions: {}
+    attractions: {}
   },
 
   /**
@@ -22,7 +22,7 @@ Page({
       }
     }).then(res=>{
       this.setData({
-        attarctions: res.result.data
+        attractions: res.result.data
       })
     });
     wx.hideLoading();

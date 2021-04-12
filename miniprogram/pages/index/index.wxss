@@ -66,7 +66,7 @@
   color: #212121;
   display:-webkit-box;
   /* 表示几行后超出隐藏 */
-  -webkit-line-clamp: 6;
+  -webkit-line-clamp: 4;
   /* 超出隐藏 */
   overflow:hidden;
   /*超出显示为省略号*/
@@ -75,6 +75,12 @@
   /*强制英文单词自动换行*/
   word-break:break-all;
 }
+
+.card-info-tips {
+  color: rgb(105, 105, 105);
+  font-size: small;
+} 
+
 
 .tail {
   height: 60rpx;

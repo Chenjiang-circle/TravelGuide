@@ -70,6 +70,7 @@
           <view>
             <view class="card-info-title">{{item.name}}</view>
             <view class="card-info-content">{{item.introduction}}</view>
+            <view class="card-info-tips">点击查看详情</view>
           </view>
         </view>
       </view>

@@ -39,7 +39,7 @@ function Custom(obj) {
         "select": 5,
         "name": placeA
       }
-    }).then(res=> {
+    }).then(res => {
       locationA += res.result.latitude + "," + res.result.longitude;
     });
     await wx.cloud.callFunction({
@@ -51,7 +51,7 @@ function Custom(obj) {
     }).then(res => {
       locationB += res.result.latitude + "," + res.result.longitude;
     });
-    
+
     await wx.serviceMarket.invokeService({
       service: 'wxc1c68623b7bdea7b',
       api: 'directionWalking',
@@ -64,6 +64,48 @@ function Custom(obj) {
       console.log(distance);
     })
 
+    return distance;
+  }
+
+  /**
+   * 计算景点A到景点B的驾车距离
+   * @param {string} placeA 景点A
+   * @param {string} placeB 景点B
+   */
+  this.getDistanceByDriving = async function (placeA, placeB) {
+    var locationA = "";
+    var locationB = "";
+    var distance;
+    await wx.cloud.callFunction({
+      name: "AttractionDAO",
+      data: {
+        "select": 5,
+        "name": placeA
+      }
+    }).then(res => {
+      locationA += res.result.latitude + "," + res.result.longitude;
+    });
+    await wx.cloud.callFunction({
+      name: "AttractionDAO",
+      data: {
+        "select": 5,
+        "name": placeB
+      }
+    }).then(res => {
+      locationB += res.result.latitude + "," + res.result.longitude;
+    });
+
+    await wx.serviceMarket.invokeService({
+      service: 'wxc1c68623b7bdea7b',
+      api: 'directionDriving',
+      data: {
+        "from": locationA,
+        "to": locationB
+      },
+    }).then(res => {
+      distance = res.data.result.routes[0].distance;
+      console.log(distance);
+    })
     return distance;
   }
 
@@ -112,15 +154,17 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    attractionNames: []
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    const name = new Custom({});
-    name.getDistanceByWalking("清明上河园", "包公祠");
+    // const name = new Custom({});
+    // name.getDistanceByWalking("清明上河园", "包公祠");
+    // name.getDistanceByDriving("清明上河园", "包公祠");
+    // 获取
   },
 
   /**

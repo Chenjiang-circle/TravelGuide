@@ -60,10 +60,13 @@ exports.main = async (event, context) => {
     case 4:
       result = await queryAttrwactionInfoById(event.id);
       break;
+    case 5:
+      result = (await queryAttractionsByName(event.name)).data[0].location;
+      break;
     default:
       result = {};
       break;
   }
 
-  return await result;
+  return result;
 }

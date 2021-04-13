@@ -5,6 +5,7 @@ cloud.init()
 
 const db = cloud.database();
 const _ = db.command;
+const $ = db.command.aggregate
 
 /**
  * 通过景点类型查找景点信息
@@ -14,6 +15,16 @@ function queryAttractionsByType(type) {
   return db.collection('attractions').where({
     type: type
   }).get();
+}
+
+/**
+ * 获取所有景点的类型
+ */
+function queryAttractionsAllType() {
+  return db.collection('attractions').aggregate()
+    .group({
+      _id: '$type'
+    }).end();
 }
 
 /**
@@ -62,6 +73,9 @@ exports.main = async (event, context) => {
       break;
     case 5:
       result = (await queryAttractionsByName(event.name)).data[0].location;
+      break;
+    case 6:
+      result = (await queryAttractionsAllType()).list;
       break;
     default:
       result = {};

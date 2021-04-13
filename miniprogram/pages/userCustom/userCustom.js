@@ -25,12 +25,46 @@ function Custom(obj) {
   }
 
   /**
-   * 计算景点A到景点B的距离
+   * 计算景点A到景点B的步行距离
    * @param {String} placeA 景点A
    * @param {String} placeB 景点B
    */
-  this.getDistance = function (placeA, placeB) {
-    return 0.0
+  this.getDistanceByWalking = async function (placeA, placeB) {
+    var locationA = "";
+    var locationB = "";
+    var distance;
+    await wx.cloud.callFunction({
+      name: "AttractionDAO",
+      data: {
+        "select": 5,
+        "name": placeA
+      }
+    }).then(res=> {
+      locationA += res.result.latitude + "," + res.result.longitude;
+    });
+    await wx.cloud.callFunction({
+      name: "AttractionDAO",
+      data: {
+        "select": 5,
+        "name": placeB
+      }
+    }).then(res => {
+      locationB += res.result.latitude + "," + res.result.longitude;
+    });
+    
+    await wx.serviceMarket.invokeService({
+      service: 'wxc1c68623b7bdea7b',
+      api: 'directionWalking',
+      data: {
+        "from": locationA,
+        "to": locationB
+      },
+    }).then(res => {
+      distance = res.data.result.routes[0].distance;
+      console.log(distance);
+    })
+
+    return distance;
   }
 
   /**
@@ -45,14 +79,14 @@ function Custom(obj) {
    * 获取旅客所要游玩的所有景点的信息
    */
   this.getAttractionInfo = function () {
-    
+
   }
 
   /**
    * 对游客中意景点进行排序。对attractions进行操作。
    */
   this.sortAttractions = function () {
-    
+
   }
 
   /**
@@ -63,7 +97,7 @@ function Custom(obj) {
   this.makeSmallPlan = function (days, remainDays) {
     var nowDay = days - remainDays;
     var day = {
-      nowday : {
+      nowday: {
         "breakfirst": "",
         "attraction": [],
         "spend_time": 0
@@ -85,7 +119,8 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    const name = new Custom({});
+    name.getDistanceByWalking("清明上河园", "包公祠");
   },
 
   /**

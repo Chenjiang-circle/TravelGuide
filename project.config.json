@@ -40,6 +40,7 @@
   "appid": "wx669f4804b58717fc",
   "projectname": "travel",
   "libVersion": "2.14.1",
+  "cloudfunctionTemplateRoot": "cloudfunctionTemplate",
   "condition": {
     "search": {
       "list": []

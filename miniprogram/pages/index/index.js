@@ -35,6 +35,19 @@ Page({
     //     })
     //   })
     // }
+    /**
+     * 查询数据库测试
+     */
+    wx.cloud.callFunction({
+      name: "AttractionDAO",
+      data: {
+        "select": 3,
+        "name": "清明上河园"
+      }
+    })
+    .then(res => {
+      // console.log(res);
+    });
   },
 
   /**

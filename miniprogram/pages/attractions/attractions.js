@@ -16,13 +16,15 @@ Page({
       title: '页面加载中...',
     });
     wx.cloud.callFunction({
-      name: "getAcctractionInfo",
+      name: "AttractionDAO",
       data: {
+        select: 4,
         id: options.id
       }
     }).then(res=>{
+      // console.log(res);
       this.setData({
-        attractions: res.result.data
+        attractions: res.result.data[0]
       })
     });
     wx.hideLoading();

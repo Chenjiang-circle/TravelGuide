@@ -14,7 +14,10 @@ Page({
   onLoad: function (options) {
     // 从数据库中调用数据
     wx.cloud.callFunction({
-      name: "getAllAcctractionsInfo"
+      name: "AttractionDAO",
+      data: {
+        "select": 3
+      }
     }).then(res=>{
       this.setData({
         attractions: res.result.data

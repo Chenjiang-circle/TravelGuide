@@ -154,7 +154,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-    attractionNames: []
+    attractionNames: [],
+    attractionGroupByType: []
   },
 
   /**
@@ -164,7 +165,31 @@ Page({
     // const name = new Custom({});
     // name.getDistanceByWalking("清明上河园", "包公祠");
     // name.getDistanceByDriving("清明上河园", "包公祠");
-    // 获取
+    // 获取所有的type
+    wx.cloud.callFunction({
+      name: "AttractionDAO",
+      data: {
+        "select": 6
+      }
+    }).then(res => {
+      this.setData({
+        attractionNames: res.result
+      });
+      console.log(res);
+      wx.cloud.callFunction({
+        name: "AttractionDAO",
+        data: {
+          "select": 7,
+          "types": this.data.attractionNames
+        }
+      }).then(res => {
+        this.setData({
+          attractionGroupByType: res.result
+        });
+        console.log(this.data.attractionGroupByType)
+      })
+    })
+
   },
 
   /**

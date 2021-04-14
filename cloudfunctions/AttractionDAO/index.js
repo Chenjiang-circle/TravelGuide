@@ -18,6 +18,21 @@ function queryAttractionsByType(type) {
 }
 
 /**
+ * 通过景点类型数组，查询多种类型的景点信息
+ * @param {Array<Object>} types 景点类型数组
+ */
+async function queryAttractionByTypes(types) {
+  var list = new Array();
+  for (let index = 0; index < types.length; index++) {
+    const element = types[index];
+    list[index] = (await db.collection('attractions').where({
+      type: element._id
+    }).get()).data;
+  }
+  return list;
+}
+
+/**
  * 获取所有景点的类型
  */
 function queryAttractionsAllType() {
@@ -76,6 +91,9 @@ exports.main = async (event, context) => {
       break;
     case 6:
       result = (await queryAttractionsAllType()).list;
+      break;
+    case 7:
+      result = await queryAttractionByTypes(event.types);
       break;
     default:
       result = {};

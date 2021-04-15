@@ -24,7 +24,6 @@ function Custom(obj) {
   };
 
   this.init = function () {
-    console.log(this.attractions);
     // 初始化attractions
     wx.cloud.callFunction({
         name: "AttractionDAO",
@@ -34,7 +33,6 @@ function Custom(obj) {
         }
       })
       .then(res => {
-        console.log(res);
         this.attractionsInfo = res.result;
       })
   }
@@ -148,13 +146,6 @@ function Custom(obj) {
   }
 
   /**
-   * 获取旅客所要游玩的所有景点的信息
-   */
-  this.getAttractionInfo = function () {
-
-  }
-
-  /**
    * 对游客中意景点进行排序。对attractions进行操作。
    */
   this.sortAttractions = function () {
@@ -178,10 +169,6 @@ function Custom(obj) {
     return day;
   }
 }
-
-// Custom.prototype.init = function() {
-//   console.log(this.test);
-// }
 
 Page({
 

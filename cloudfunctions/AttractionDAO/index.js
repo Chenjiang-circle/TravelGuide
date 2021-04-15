@@ -59,10 +59,10 @@ function queryAttractionsByName(name) {
 async function queryAttractionByNames(names) {
   var list = new Array();
   for (let index = 0; index < names.length; index++) {
-    const element = names[index];
+    var element = names[index];
     list[index] = (await db.collection('attractions').where({
       name: element
-    }).get()).data;
+    }).get()).data[0];
   }
   return list;
 }
@@ -112,6 +112,7 @@ exports.main = async (event, context) => {
       break;
     case 8:
       result = await queryAttractionByNames(event.names);
+      break;
     default:
       result = {};
       break;

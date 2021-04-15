@@ -1,13 +1,43 @@
 // pages/userCustom/userCustom.js
 function Custom(obj) {
-  this.obj = obj;
-  this.demand = {};
-  this.attractions = [];
+  /**
+   * 用户的要求
+   */
+  this.demand = obj;
+  /**
+   * 用户想要游玩的景点名称列表
+   */
+  this.attractions = obj.attractions;
+  /**
+   * 用户已经游玩过的景点名称列表
+   */
   this.hasPlay = [];
+  /**
+   * 用户想要游玩的景点信息列表
+   */
   this.attractionsInfo = [];
+  /**
+   * 用户的旅行计划
+   */
   this.plan = {
     "details": []
   };
+
+  this.init = function () {
+    console.log(this.attractions);
+    // 初始化attractions
+    wx.cloud.callFunction({
+        name: "AttractionDAO",
+        data: {
+          "select": 8,
+          "names": this.attractions
+        }
+      })
+      .then(res => {
+        console.log(res);
+        this.attractionsInfo = res.result;
+      })
+  }
 
   /**
    * 计算旅客游玩的半天数
@@ -18,7 +48,7 @@ function Custom(obj) {
 
   /**
    * 将已游玩的景点加入hasPlay数组中
-   * @param {Array} attractionName 
+   * @param {Array} attractionName 已游玩的景点名称
    */
   this.addHasPlay = function (attractionName) {
     return this.hasPlay.push(attractionName);
@@ -148,6 +178,11 @@ function Custom(obj) {
     return day;
   }
 }
+
+// Custom.prototype.init = function() {
+//   console.log(this.test);
+// }
+
 Page({
 
   /**
@@ -189,6 +224,9 @@ Page({
         console.log(this.data.attractionGroupByType)
       })
     })
+
+    // const name = new Custom({});
+    // name.init();
 
   },
 
@@ -240,8 +278,10 @@ Page({
   onShareAppMessage: function () {
 
   },
-  formSubmit(e) {
+  formSubmit: function (e) {
     console.log(e.detail.value);
     // console.log(custom.countDays(e.detail.value.travelDays));
+    const custom = new Custom(e.detail.value);
+    custom.init();
   }
 })

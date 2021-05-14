@@ -4,50 +4,31 @@ Page({
    * 页面的初始数据
    */
   data: {
-    swipper_data: [], // 页面顶部导航栏中的图片地址
-    hot_plan: [], // 热门路线信息
-    hot_attraction: [] // 热门景点信息
+    swipper_data: [],   // 页面顶部导航栏中的图片地址
+    hot_plan: [],       // 热门路线信息
+    hot_attraction: []  // 热门景点信息
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    wx.cloud.callFunction({
-        name: "indexGetHotAcctraction"
-      })
-      .then(res => {
-        this.setData({
-          hot_attraction: res.result.data
+    var app = getApp();
+    if (app.globalData.userInfo) {
+      console.log("yes");
+    } else {
+      wx.showModal({
+        title: "登录提醒",
+        content: "您尚未登录，请点击确定前往登录页面",
+        showCancel: false
+      }).then(res => {
+        wx.navigateTo({
+          url: '/pages/login/login',
         })
-      });
-    // var app = getApp();
-    // if (app.globalData.userInfo) {
-    //   console.log("yes");
-    // } else {
-    //   wx.showModal({
-    //     title: "登录提醒",
-    //     content: "您尚未登录，请点击确定前往登录页面",
-    //     showCancel: false
-    //   }).then(res => {
-    //     wx.navigateTo({
-    //       url: '/pages/login/login',
-    //     })
-    //   })
-    // }
-    /**
-     * 查询数据库测试
-     */
-    wx.cloud.callFunction({
-      name: "AttractionDAO",
-      data: {
-        "select": 3,
-        "name": "清明上河园"
-      }
-    })
-    .then(res => {
-      // console.log(res);
-    });
+      })
+    }
+    
+    
   },
 
   /**
@@ -61,7 +42,21 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    var _this = this
+    wx.getStorage({
+      key: 'access-token',
+    }).then(res => {
+      wx.request({
+        url: 'http://localhost:8181/attraction/getAllAttractions/' + res.data,
+        method: "GET",
+        success(res) {
+          console.log(res);
+          _this.setData({
+            hot_attraction: res.data.object.attractions.slice(0, 3)
+          })
+        }
+      })
+    })
   },
 
   /**
@@ -112,6 +107,7 @@ Page({
     });
   },
   navigateToInfo(res) {
+    console.log(res)
     // 跳转到景点详情页面
     var url = "/pages/attractions/attractions?id=" + res.currentTarget.dataset.index;
     wx.navigateTo({
@@ -124,12 +120,4 @@ Page({
       url: "/pages/attractionList/attractionList",
     });
   }
-  // deleteData() {
-  //   console.log("diaoyong");
-  //   wx.cloud.callFunction({
-  //     name: "demo"
-  //   }).then(res => {
-  //     alert("删除完成！");
-  //   })
-  // }
 })

@@ -1,12 +1,13 @@
 {
   "pages": [
     "pages/index/index",
+    "pages/plan/plan",
+    "pages/login/login",
+    "pages/test/test",
     "pages/userCenter/userCenter",
     "pages/userCustom/userCustom",
     "pages/attractions/attractions",
-    "pages/attractionList/attractionList",
-    "pages/login/login",
-    "pages/plan/plan"
+    "pages/attractionList/attractionList"
   ],
   "window": {
     "backgroundTextStyle":"light",

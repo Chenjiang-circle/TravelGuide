@@ -23,7 +23,7 @@
       <view class="page-section-title">中意景点：</view>
       <checkbox-group name="attractions">
         <view wx:for="{{attractionNames}}" wx:for-index="idx" wx:for-item="item">
-          <view class="attractions_line">{{item._id}}</view>
+          <view class="attractions_line">{{item}}</view>
           <label wx:for="{{attractionGroupByType[idx]}}" wx:for-index="index" wx:for-item="itemin">
             <checkbox value="{{itemin.name}}" />{{itemin.name}}</label>
         </view>

@@ -1,0 +1,7 @@
+<form catchsubmit="test">
+<view>经度：</view>
+<input type="number" name="longitude"/>
+<view>纬度：</view>
+<input type="number" name="latitude"/>
+<button type="primary" form-type="submit">规划路线</button>
+</form>

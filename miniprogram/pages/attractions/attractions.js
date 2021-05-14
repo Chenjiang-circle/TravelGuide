@@ -12,22 +12,18 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    wx.showLoading({
-      title: '页面加载中...',
-    });
-    wx.cloud.callFunction({
-      name: "AttractionDAO",
-      data: {
-        select: 4,
-        id: options.id
+    // console.log(options)
+    var _this = this
+    wx.request({
+      url: 'http://localhost:8181/attraction/getById?id=' + options.id,
+      method: "GET",
+      success(res) {
+        console.log(res);
+        _this.setData({
+          attractions: res.data.object.attraction
+        })
       }
-    }).then(res=>{
-      // console.log(res);
-      this.setData({
-        attractions: res.result.data[0]
-      })
-    });
-    wx.hideLoading();
+    })
   },
 
   /**

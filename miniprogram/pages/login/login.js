@@ -67,19 +67,44 @@ Page({
     // console.log(e);
     var app = getApp();
     app.globalData.userInfo = e.detail.userInfo;
-    wx.cloud.callFunction({
-      name: "login",
-      data: app.userInfo
-    }).then(res => {
-      wx.showModal({
-        title: "登录提醒",
-        content: "登录成功！",
-        showCancel: false
-      }).then(res=>{
-        wx.switchTab({
-          url: '/pages/index/index',
-        })
-      })
-    });
+    // console.log(app.globalData.userInfo)
+    wx.login({
+      success (res) {
+        if (res.code) {
+          //发起网络请求
+          wx.request({
+            url: 'http://localhost:8181/user/test',
+            method: "GET",
+            data: {
+              code: res.code
+            },
+            success(res) {
+              app.globalData.userInfo.openId = res.data.object.openId;
+              wx.request({
+                url: 'http://localhost:8181/user/getToken',
+                method: "POST",
+                data: app.globalData.userInfo,
+                success(res) {
+                  console.log(res);
+                  if(res.data.status === "success") {
+                    wx.setStorage({
+                      data: res.data.object.token,
+                      key: 'access-token',
+                      success() {
+                        wx.switchTab({
+                          url: '/pages/index/index'
+                        })
+                      }
+                    })
+                  }
+                }
+              })
+            }
+          })
+        } else {
+          console.log('登录失败！' + res.errMsg)
+        }
+      }
+    })
   }
 })

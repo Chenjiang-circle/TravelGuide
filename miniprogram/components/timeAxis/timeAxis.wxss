@@ -13,7 +13,7 @@
   width: 9px;
   height: 9px;
   border-radius: 4.5px;
-  background: red;
+  background: #2196F3;
 }
 
 .outRoundVIew {
@@ -44,12 +44,17 @@
 .curentTitle {
   font-size: 16px;
   line-height: 22.5px;
-  color: #fe473c
+  color: #2196F3
 }
 
 .curentTime {
   font-size: 14px;
-  color: #fe473c
+  color: #2196F3
+}
+
+.curentContent {
+  font-size: 14px;
+  color: #2196F3;
 }
 
 .outTitle {
@@ -61,4 +66,9 @@
 .outTime {
   font-size: 14px;
   color: #999
+}
+
+.outContent {
+  font-size: 14px;
+  color: #999;
 }

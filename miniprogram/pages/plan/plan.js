@@ -62,5 +62,19 @@ Page({
    */
   onShareAppMessage: function () {
 
+  },
+  test: function (para) {
+    console.log(para.detail.value);
+    let plugin = requirePlugin('routePlan');
+    let key = '57CBZ-JHVRS-LDNO6-6KI3P-JV25O-EDBCB'; //使用在腾讯位置服务申请的key
+    let referer = 'travel'; //调用插件的app的名称
+    let endPoint = JSON.stringify({ //终点
+      'name': '清明上河园',
+      'latitude': 34.815321,
+      'longitude': 114.347061
+    });
+    wx.navigateTo({
+      url: 'plugin://routePlan/index?key=' + key + '&referer=' + referer + '&endPoint=' + endPoint + '&mode=transit'
+    });
   }
 })

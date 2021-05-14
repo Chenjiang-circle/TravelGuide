@@ -4,7 +4,7 @@
   <view class="attraction-card">
     <!-- 景点照片展示 -->
     <view class="attraction-img">
-      <image src="{{attractions.images[0]}}" mode="widthFix"  class="attraction-image"/>
+      <image src="{{attractions.images}}" mode="widthFix"  class="attraction-image"/>
     </view>
     <!-- 景点文字介绍 -->
     <view class="attraction-info">

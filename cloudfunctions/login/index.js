@@ -19,16 +19,4 @@ exports.main = async (event, context) => {
       data: event
     });
   }
-  // if (!result) {
-
-  // } else {
-  //   return await "已存在";
-  // }
-
-  // return {
-  //   event: event,
-  //   openid: wxContext.OPENID,
-  //   appid: wxContext.APPID,
-  //   unionid: wxContext.UNIONID,
-  // }
 }

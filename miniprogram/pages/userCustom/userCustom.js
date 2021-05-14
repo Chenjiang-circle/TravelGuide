@@ -184,37 +184,29 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    // const name = new Custom({});
-    // name.getDistanceByWalking("清明上河园", "包公祠");
-    // name.getDistanceByDriving("清明上河园", "包公祠");
-    // 获取所有的type
-    wx.cloud.callFunction({
-      name: "AttractionDAO",
-      data: {
-        "select": 6
-      }
-    }).then(res => {
-      this.setData({
-        attractionNames: res.result
-      });
-      console.log(res);
-      wx.cloud.callFunction({
-        name: "AttractionDAO",
-        data: {
-          "select": 7,
-          "types": this.data.attractionNames
-        }
-      }).then(res => {
-        this.setData({
-          attractionGroupByType: res.result
+    var _this = this
+    // 首先获取所有的类型
+    wx.request({
+      url: 'http://localhost:8181/attraction/getAttractionType',
+      method: "GET",
+      success(res) {
+        // console.log(res)
+        _this.setData({
+          attractionNames: res.data.object.attractionType
         });
-        console.log(this.data.attractionGroupByType)
-      })
+        wx.request({
+          url: 'http://localhost:8181/attraction/getAttractionByTypes',
+          method: "POST",
+          data: _this.data.attractionNames,
+          success(res) {
+            console.log(res);
+            _this.setData({
+              attractionGroupByType: res.data.object.attractionList
+            })
+          }
+        })
+      }
     })
-
-    // const name = new Custom({});
-    // name.init();
-
   },
 
   /**

@@ -4,7 +4,10 @@
   height: 100%;
   display: flex;
   justify-content: center;
-  align-items: center
+  align-items: center;
+  background-color: #BBDEFB;
+  padding-top: 20rpx;
+  padding-bottom: 50rpx;
 }
 
 .attraction-card {
@@ -37,10 +40,35 @@
 }
 
 .attraction-name {
+  text-align: center;
   font-size: x-large;
+}
+
+.attraction-level {
+  text-align: center;
+  font-style: italic;
 }
 
 .attraction-content {
   margin-top: 20rpx;
   font-size: x-small;
+}
+
+.attraction-priceInfo {
+  margin-top: 20rpx;
+}
+
+.attraction-playTime {
+  margin-top: 20rpx;
+  font-size: small;
+}
+
+.attraction-location {
+  margin-top: 20rpx;
+  font-size: small;
+}
+
+.attraction-phone {
+  margin-top: 10rpx;
+  font-size: small;
 }

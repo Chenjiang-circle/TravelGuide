@@ -1,34 +1,27 @@
-// pages/attractionList/attractionList.js
+// pages/test/test.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    attractions: []
+
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    var _this = this
-    wx.getStorage({
-      key: 'access-token'
-    }).then(res => {
-      wx.request({
-        url: 'http://localhost:8181/attraction/getAllAttractions/' + res.data,
-        method: "GET",
-        success(res) {
-          console.log(res)
-          _this.setData({
-            attractions: res.data.object.attractions
-          })
-        }
-      })
+    wx.cloud.callFunction({
+      name: "AttractionDAO",
+      data: {
+        "select": 8,
+        "names": ["清明上河园", "包公祠"]
+      }
     })
-
-    
+    .then(res => {
+      console.log(res);
+    })
   },
 
   /**
@@ -56,7 +49,7 @@ Page({
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-
+    
   },
 
   /**
@@ -79,11 +72,18 @@ Page({
   onShareAppMessage: function () {
 
   },
-  navigateToInfo(res) {
-    // 跳转到景点详情页面
-    var url = "/pages/attractions/attractions?id=" + res.currentTarget.dataset.index;
+  test: function (para) {
+    console.log(para.detail.value);
+    let plugin = requirePlugin('routePlan');
+    let key = '57CBZ-JHVRS-LDNO6-6KI3P-JV25O-EDBCB'; //使用在腾讯位置服务申请的key
+    let referer = 'travel'; //调用插件的app的名称
+    let endPoint = JSON.stringify({ //终点
+      'name': '清明上河园',
+      'latitude': 34.815321,
+      'longitude': 114.347061
+    });
     wx.navigateTo({
-      url: url,
-    })
+      url: 'plugin://routePlan/index?key=' + key + '&referer=' + referer + '&endPoint=' + endPoint + '&mode=transit'
+    });
   }
 })

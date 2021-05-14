@@ -1,14 +1,20 @@
+.plan-body {
+  background-color: #BBDEFB;
+}
+
 .plan-title {
-  display: flex;
-  justify-content: center;
-  margin-top: 20rpx;
+  text-align: center;
+  padding-top: 20rpx;
 }
 
 .title {
-  font-size: larger;
+  font-size: x-large;
+  padding-bottom: 10rpx;
+  border-bottom: white solid 3rpx;
 }
 
 .plan-imgs {
+  margin-top: 20rpx;
   display: flex;
   justify-content: center;
 }
@@ -23,7 +29,12 @@
 }
 
 .plan-details {
-  margin-top: 20rpx;
+  margin-top: 40rpx;
+}
+.card-star {
+  display: inline-block;
+  width: 40rpx;
+  height: 40rpx;
 }
 
 .timeline {
@@ -52,4 +63,27 @@
   font-size: smaller;
   margin-bottom: 20rpx;
   padding: 5%;
+}
+
+.plan-item-title {
+  margin-top: 15rpx;
+  font-size: large;
+}
+
+.plan-item-position {
+  margin-top: 20rpx;
+}
+
+.plan-item-time {
+  margin-top: 20rpx;
+}
+
+.plan-item-info {
+  margin-top: 20rpx;
+}
+
+.plan-item-info-item {
+  margin-top: 20rpx;
+  color: #AB8C40;
+  font-style: italic;
 }

@@ -23,6 +23,10 @@ Component({
       type: String,
       value: ''
     },
+    axisContent: {
+      type: String,
+      value: ''
+    },
     textArray: {
       type: Array,
       value: []

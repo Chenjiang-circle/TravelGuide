@@ -3,10 +3,10 @@
     <text>开封景点列表</text>
   </view>
   <view class="cards">
-    <view class="card" data-index="{{item._id}}" wx:for="{{attractions}}" wx:key="index" bindtap="navigateToInfo">
+    <view class="card" data-index="{{item.id}}" wx:for="{{attractions}}" wx:key="index" bindtap="navigateToInfo">
       <!-- 放置图片 -->
       <view class="card-img-box">
-        <image src="{{item.images[0]}}" class="card-img" mode="widthFix" />
+        <image src="{{item.images}}" class="card-img" mode="widthFix" />
       </view>
       <!-- 放置文字信息 -->
       <view class="card-info-box">

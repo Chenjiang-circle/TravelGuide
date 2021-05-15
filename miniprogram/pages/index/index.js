@@ -14,9 +14,13 @@ Page({
    */
   onLoad: function (options) {
     var app = getApp();
-    if (app.globalData.userInfo) {
-      console.log("yes");
-    } else {
+    wx.getStorage({
+      key: 'access-token'
+    })
+    .then(res => {
+      console.log("存在token！")
+    })
+    .catch(error => {
       wx.showModal({
         title: "登录提醒",
         content: "您尚未登录，请点击确定前往登录页面",
@@ -26,9 +30,7 @@ Page({
           url: '/pages/login/login',
         })
       })
-    }
-    
-    
+    })
   },
 
   /**

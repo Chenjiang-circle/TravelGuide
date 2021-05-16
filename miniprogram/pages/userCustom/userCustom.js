@@ -177,7 +177,20 @@ Page({
    */
   data: {
     attractionNames: [],
-    attractionGroupByType: []
+    attractionGroupByType: [],
+    currentDate: new Date().getTime(),
+    formatCurrentDate: "",
+    snacks: [],
+    minDate: new Date().getTime(),
+    formatter(type, value) {
+      if (type === 'year') {
+        return `${value}年`;
+      } 
+      if (type === 'month') {
+        return `${value}月`;
+      }
+      return value;
+    },
   },
 
   /**
@@ -204,6 +217,16 @@ Page({
               attractionGroupByType: res.data.object.attractionList
             })
           }
+        })
+      }
+    })
+    wx.request({
+      url: 'http://localhost:8181/snack/getAllSnack',
+      method: "GET",
+      success(res) {
+        console.log(res);
+        _this.setData({
+          snacks: res.data.object.snacks
         })
       }
     })
@@ -259,8 +282,19 @@ Page({
   },
   formSubmit: function (e) {
     console.log(e.detail.value);
-    // console.log(custom.countDays(e.detail.value.travelDays));
-    const custom = new Custom(e.detail.value);
-    custom.init();
+  },
+  onInput(event) {
+    this.setData({
+      currentDate: event.detail,
+    });
+  },
+  confirm(event) {
+    var _date = new Date(this.data.currentDate);
+    var year = _date.getFullYear();
+    var month = _date.getMonth()+1;
+    var day = _date.getDate()
+    this.setData({
+      formatCurrentDate: year+"年"+month+"月"+day+"日"
+    })
   }
 })

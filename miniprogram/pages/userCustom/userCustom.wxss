@@ -26,6 +26,7 @@
 
 .user-input-box {
   display: flex;
+  margin-bottom: 20rpx;
 }
 
 label {
@@ -36,7 +37,7 @@ label {
 }
 
 .user-input {
-  width: 30%;
+  width: 60%;
   border: 1px solid thistle;
   border-radius: 20rpx;
   margin-right: 15rpx;

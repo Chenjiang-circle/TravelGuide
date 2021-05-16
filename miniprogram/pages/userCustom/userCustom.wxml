@@ -23,33 +23,15 @@
       <view class="page-section-title">中意景点：</view>
       <checkbox-group name="attractions">
         <view wx:for="{{attractionNames}}" wx:for-index="idx" wx:for-item="item">
-          <view class="attractions_line">{{item}}</view>
+          <view class="attractions_line"><van-tag mark type="primary" size="large">{{item}}</van-tag></view>
           <label wx:for="{{attractionGroupByType[idx]}}" wx:for-index="index" wx:for-item="itemin">
             <checkbox value="{{itemin.name}}" />{{itemin.name}}</label>
         </view>
       </checkbox-group>
       <checkbox-group name="snacks">
         <view class="page-section-title">特色小吃：</view>
-        <view class="attractions_line">网红小吃：</view>
-        <label>
-          <checkbox value="1" checked="true" />网红小吃一号</label>
-        <label>
-          <checkbox value="2" />网红小吃2号</label>
-        <view class="attractions_line">开封特色：</view>
-        <label>
-          <checkbox value="2" />特色小吃1</label>
-        <label>
-          <checkbox value="3" checked="true" />特色小吃2</label>
-        <label>
-          <checkbox value="4" />特色小吃3</label>
-        <label>
-          <checkbox value="5" />特色小吃4</label>
-        <label>
-          <checkbox value="6" />特色小吃5</label>
-        <label>
-          <checkbox value="7" />特色小吃6</label>
-        <label>
-          <checkbox value="8" />特色小吃7</label>
+        <label wx:for="{{ snacks }}" wx:for-index="index" wx:for-item="snack">
+          <checkbox value="{{snack.id}}" checked="" />{{ snack.name }} <van-tag plain type="primary">{{ snack.label }}</van-tag></label>
       </checkbox-group>
       <view class="page-section-title">游玩天数：</view>
       <radio-group name="travelDays">
@@ -73,7 +55,7 @@
           <radio value="7" />七天</label>
       </radio-group>
       <view class="page-section-title">住宿倾向：</view>
-      <checkbox-group name="hotel_type">
+      <checkbox-group name="hotelType">
         <label>
           <checkbox value="商务酒店" checked="true">商务酒店</checkbox>
         </label>
@@ -92,8 +74,20 @@
       </checkbox-group>
       <view class="page-section-title">旅行预算：</view>
       <view class="user-input-box">
-        <input type="number" name="travalAccount" class="user-input" value="0" />元
+        <input type="number" name="travalBudget" class="user-input" value="0" />元
       </view>
+      <view class="page-section-title">预计到达开封时间：</view>
+      <view class="user-input-box">
+        <input type="text" name="comeDate" class="user-input" value="{{ formatCurrentDate }}" />
+      </view>
+      <van-datetime-picker 
+          type="date" 
+          value="{{ currentDate }}" 
+          bind:input="onInput" 
+          min-date="{{ minDate }}"
+          formatter="{{ formatter }}" 
+          bind:confirm="confirm" 
+          cancel-button-text="" />
       <view class="submmit-box">
         <button type="primary" form-type="submit">提交</button>
         <button type="default" form-type="reset">清空</button>

@@ -25,7 +25,7 @@
         <view wx:for="{{attractionNames}}" wx:for-index="idx" wx:for-item="item">
           <view class="attractions_line"><van-tag mark type="primary" size="large">{{item}}</van-tag></view>
           <label wx:for="{{attractionGroupByType[idx]}}" wx:for-index="index" wx:for-item="itemin">
-            <checkbox value="{{itemin.name}}" />{{itemin.name}}</label>
+            <checkbox value="{{itemin.id}}" />{{itemin.name}}</label>
         </view>
       </checkbox-group>
       <checkbox-group name="snacks">

@@ -181,6 +181,7 @@ Page({
     currentDate: new Date().getTime(),
     formatCurrentDate: "",
     snacks: [],
+    hotelTypes: [],
     minDate: new Date().getTime(),
     formatter(type, value) {
       if (type === 'year') {
@@ -212,7 +213,7 @@ Page({
           method: "POST",
           data: _this.data.attractionNames,
           success(res) {
-            console.log(res);
+            // console.log(res);
             _this.setData({
               attractionGroupByType: res.data.object.attractionList
             })
@@ -224,9 +225,19 @@ Page({
       url: 'http://localhost:8181/snack/getAllSnack',
       method: "GET",
       success(res) {
-        console.log(res);
+        // console.log(res);
         _this.setData({
           snacks: res.data.object.snacks
+        })
+      }
+    })
+    wx.request({
+      url: 'http://localhost:8181/hotel/getHotelType',
+      method: "GET",
+      success(res) {
+        console.log(res);
+        _this.setData({
+          hotelTypes: res.data.object.types
         })
       }
     })

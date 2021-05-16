@@ -56,20 +56,8 @@
       </radio-group>
       <view class="page-section-title">住宿倾向：</view>
       <checkbox-group name="hotelType">
-        <label>
-          <checkbox value="商务酒店" checked="true">商务酒店</checkbox>
-        </label>
-        <label>
-          <checkbox value="快捷酒店" checked="true">快捷酒店</checkbox>
-        </label>
-        <label>
-          <checkbox value="高级酒店">高级酒店</checkbox>
-        </label>
-        <label>
-          <checkbox value="民宿">民宿</checkbox>
-        </label>
-        <label>
-          <checkbox value="青旅">青旅</checkbox>
+        <label wx:for="{{ hotelTypes }}" wx:for-index="idx" wx:for-item="item">
+          <checkbox value="{{ item }}">{{ item }}</checkbox>
         </label>
       </checkbox-group>
       <view class="page-section-title">旅行预算：</view>

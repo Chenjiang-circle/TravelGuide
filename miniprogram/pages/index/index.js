@@ -53,9 +53,16 @@ Page({
         method: "GET",
         success(res) {
           console.log(res);
-          _this.setData({
-            hot_attraction: res.data.object.attractions.slice(0, 3)
-          })
+          if(res.data.status === 'fail') {
+            wx.navigateTo({
+              url: '/pages/login/login',
+            })
+          }
+          else {
+            _this.setData({
+              hot_attraction: res.data.object.attractions.slice(0, 3)
+            })
+          }
         }
       })
     })

@@ -62,7 +62,7 @@
       </checkbox-group>
       <view class="page-section-title">旅行预算：</view>
       <view class="user-input-box">
-        <input type="number" name="travalBudget" class="user-input" value="0" />元
+        <input type="number" name="travelBudget" class="user-input" value="0" />元
       </view>
       <view class="page-section-title">预计到达开封时间：</view>
       <view class="user-input-box">

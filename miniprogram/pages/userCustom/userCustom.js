@@ -1,175 +1,4 @@
 // pages/userCustom/userCustom.js
-function Custom(obj) {
-  /**
-   * 用户的要求
-   */
-  this.demand = obj;
-  /**
-   * 用户想要游玩的景点名称列表
-   */
-  this.attractions = obj.attractions;
-  /**
-   * 用户已经游玩过的景点名称列表
-   */
-  this.hasPlay = [];
-  /**
-   * 用户想要游玩的景点信息列表
-   */
-  this.attractionsInfo = [];
-  /**
-   * 用户的旅行计划
-   */
-  this.plan = {
-    "details": []
-  };
-
-  this.init = function () {
-    // 初始化attractions
-    wx.cloud.callFunction({
-        name: "AttractionDAO",
-        data: {
-          "select": 8,
-          "names": this.attractions
-        }
-      })
-      .then(res => {
-        this.attractionsInfo = res.result;
-      })
-  }
-
-  /**
-   * 计算旅客游玩的半天数
-   */
-  this.countDays = function () {
-    return this.obj.travelDays / 0.5;
-  }
-
-  /**
-   * 将已游玩的景点加入hasPlay数组中
-   * @param {Array} attractionName 已游玩的景点名称
-   */
-  this.addHasPlay = function (attractionName) {
-    return this.hasPlay.push(attractionName);
-  }
-
-  /**
-   * 计算景点A到景点B的步行距离
-   * @param {String} placeA 景点A
-   * @param {String} placeB 景点B
-   */
-  this.getDistanceByWalking = async function (placeA, placeB) {
-    var locationA = "";
-    var locationB = "";
-    var distance;
-    await wx.cloud.callFunction({
-      name: "AttractionDAO",
-      data: {
-        "select": 5,
-        "name": placeA
-      }
-    }).then(res => {
-      locationA += res.result.latitude + "," + res.result.longitude;
-    });
-    await wx.cloud.callFunction({
-      name: "AttractionDAO",
-      data: {
-        "select": 5,
-        "name": placeB
-      }
-    }).then(res => {
-      locationB += res.result.latitude + "," + res.result.longitude;
-    });
-
-    await wx.serviceMarket.invokeService({
-      service: 'wxc1c68623b7bdea7b',
-      api: 'directionWalking',
-      data: {
-        "from": locationA,
-        "to": locationB
-      },
-    }).then(res => {
-      distance = res.data.result.routes[0].distance;
-      console.log(distance);
-    })
-
-    return distance;
-  }
-
-  /**
-   * 计算景点A到景点B的驾车距离
-   * @param {string} placeA 景点A
-   * @param {string} placeB 景点B
-   */
-  this.getDistanceByDriving = async function (placeA, placeB) {
-    var locationA = "";
-    var locationB = "";
-    var distance;
-    await wx.cloud.callFunction({
-      name: "AttractionDAO",
-      data: {
-        "select": 5,
-        "name": placeA
-      }
-    }).then(res => {
-      locationA += res.result.latitude + "," + res.result.longitude;
-    });
-    await wx.cloud.callFunction({
-      name: "AttractionDAO",
-      data: {
-        "select": 5,
-        "name": placeB
-      }
-    }).then(res => {
-      locationB += res.result.latitude + "," + res.result.longitude;
-    });
-
-    await wx.serviceMarket.invokeService({
-      service: 'wxc1c68623b7bdea7b',
-      api: 'directionDriving',
-      data: {
-        "from": locationA,
-        "to": locationB
-      },
-    }).then(res => {
-      distance = res.data.result.routes[0].distance;
-      console.log(distance);
-    })
-    return distance;
-  }
-
-  /**
-   * 计算旅客所需支付的门票费用
-   */
-  this.countTicketPrice = function () {
-    var price = 0.0;
-    return price;
-  }
-
-  /**
-   * 对游客中意景点进行排序。对attractions进行操作。
-   */
-  this.sortAttractions = function () {
-
-  }
-
-  /**
-   * 对游客的一个半天时间进行规划，返回一个计划对象
-   * @param {number} days 旅客计划游玩半天数（以半天为单位）
-   * @param {number} remainDays 旅客剩余游玩半天数
-   */
-  this.makeSmallPlan = function (days, remainDays) {
-    var nowDay = days - remainDays;
-    var day = {
-      nowday: {
-        "breakfirst": "",
-        "attraction": [],
-        "spend_time": 0
-      }
-    };
-    return day;
-  }
-}
-
 Page({
 
   /**
@@ -186,7 +15,7 @@ Page({
     formatter(type, value) {
       if (type === 'year') {
         return `${value}年`;
-      } 
+      }
       if (type === 'month') {
         return `${value}月`;
       }
@@ -198,8 +27,22 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    var _this = this
+    
     // 首先获取所有的类型
+  },
+
+  /**
+   * 生命周期函数--监听页面初次渲染完成
+   */
+  onReady: function () {
+
+  },
+
+  /**
+   * 生命周期函数--监听页面显示
+   */
+  onShow: function () {
+    var _this = this
     wx.request({
       url: 'http://localhost:8181/attraction/getAttractionType',
       method: "GET",
@@ -225,7 +68,6 @@ Page({
       url: 'http://localhost:8181/snack/getAllSnack',
       method: "GET",
       success(res) {
-        // console.log(res);
         _this.setData({
           snacks: res.data.object.snacks
         })
@@ -241,20 +83,6 @@ Page({
         })
       }
     })
-  },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
   },
 
   /**
@@ -293,6 +121,19 @@ Page({
   },
   formSubmit: function (e) {
     console.log(e.detail.value);
+    wx.getStorage({
+      key: 'access-token',
+    }).then(res => {
+      wx.request({
+        url: 'http://localhost:8181/plan/demand/' + res.data,
+        method: "POST",
+        data: e.detail.value,
+        success(res) {
+          console.log('要求发送成功！')
+        }
+      })
+    })
+    
   },
   onInput(event) {
     this.setData({
@@ -302,10 +143,10 @@ Page({
   confirm(event) {
     var _date = new Date(this.data.currentDate);
     var year = _date.getFullYear();
-    var month = _date.getMonth()+1;
+    var month = _date.getMonth() + 1;
     var day = _date.getDate()
     this.setData({
-      formatCurrentDate: year+"年"+month+"月"+day+"日"
+      formatCurrentDate: year + "年" + month + "月" + day + "日"
     })
   }
 })

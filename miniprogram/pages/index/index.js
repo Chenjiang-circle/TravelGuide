@@ -19,6 +19,25 @@ Page({
     })
     .then(res => {
       console.log("存在token！")
+      // 如果存在，判断是否过期
+      wx.request({
+        url: 'http://localhost:8181/user/checkToken/' + res.data,
+        method: "POST",
+        success(res) {
+          // console.log(res);
+          if(res.data.status === 'fail'){
+            wx.showModal({
+              title: "登录提醒",
+              content: "您的登陆已经过期，请点击确定重新登陆",
+              showCancel: false
+            }).then(res => {
+              wx.navigateTo({
+                url: '/pages/login/login',
+              })
+            })
+          }
+        }
+      })
     })
     .catch(error => {
       wx.showModal({

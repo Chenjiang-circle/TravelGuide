@@ -1,65 +1,88 @@
-<view class="plan-body">
-  <!-- 路线标题 -->
-  <view class="plan-title">
-    <text class="title">开封3日2晚私家团</text>
+<view class="body">
+  <button type="primary" class="next" size="mini" bindtap="next">下一步</button>
+  <van-row>
+    <van-col span="24">
+      <div class="top-margin-box"></div>
+    </van-col>
+    <van-col span="20" offset="2">
+      <div class="title">{{ plan.title }}</div>
+    </van-col>
+    <van-col span="20" offset="2">
+      <div class="title-bottom"></div>
+    </van-col>
+    <van-col span="20" offset="2">
+      <van-steps steps="{{ steps }}" active="{{ stepActive }}" direction="vertical" active-color="#2196F3" />
+    </van-col>
+  </van-row>
+  <view class="planItem-detail-title">
+    <van-icon name="coupon-o" color="#2196F3" size="15px" />
+    计划详情
   </view>
-  <!-- 景点展示（轮播图） -->
-  <view class="plan-imgs">
-    <swiper autoplay="true" interval="3000" circular="true" class="swipper-body">
-      <swiper-item class="swiper-img">
-        <image src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fimage.qqlyw.cn%2FAttachments%2Fjpeg%2F2017%2F08%2F04%2F5qafwjc1gem.jpeg&refer=http%3A%2F%2Fimage.qqlyw.cn&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1621496247&t=e9d527b5bdcd179616ce8e10ba635f97" mode="heightFix" />
-      </swiper-item>
-      <swiper-item class="swiper-img">
-        <image src="https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=241010988,886396359&fm=26&gp=0.jpg" mode="heightFix" />
-      </swiper-item>
-    </swiper>
-  </view>
-  <!-- 路线详细信息 -->
-  <view class="plan-details">
-    <!-- 路线详细信息——时间轴 -->
-    <view class="timeline">
-      <view class='timeAxisView'>
-        <timeAxis isCurent="{{false}}" axisTitle="第一天早餐" axisTime="08:00:00-9:00:00" axisContent="酒店内早餐" />
-        <timeAxis isCurent="{{true}}" axisTitle="第一天上午" axisTime="09:00:00-12:00:00" axisContent="乘车到达「清明上河园」，游览「石雕清明上河图」「虹桥」「拂云阁」「临水大殿」「九龙桥」等景点" />
-        <timeAxis axisTitle="第一天中午" axisTime="12:00:00-14:00:00" axisContent="到「泥炉牛铺」火锅店就餐" />
-        <timeAxis axisTitle="第一天下午" axisTime="14:00:00-18:00:00" axisContent="乘车到达「龙亭公园」，欣赏气势恢宏的皇宫建筑群、碧波荡漾的潘杨二湖、栩栩如生的宋代蜡像馆，以及众多的文物"/>
-        <timeAxis axisTitle="第三天晚上" axisTime="18:00:00-21:00:00" axisContent="乘车到达「西司夜市」，特别推荐：容记杏仁茶、 伊斯兰眼镜烤肉大王、二嫂羊肉炕馍、烘焖羊肉串、鸡翅、黄焖鱼、杏仁茶、麻辣羊蹄、炒凉粉加烧饼、红薯泥、炒凉粉、油泼面、炒酸奶、冰糖梨、烤鱼、灌汤包子、涮牛肚、熏兔肉、桶子鸡、臭豆腐、铁锅炖牛肉丸子粉条、脆鲜奶、酸奶芦荟、酸奶炒芦荟、胡辣汤、玫瑰切糕、扣碗、奶油炸糕、付二炒饼、炒海盘、白吉馍。" isShowLeftLine="{{false}}" />
-      </view>
+  <view class="card1" data-index="{{item.id}}" wx:for="{{plan.planItems[stepActive].attractions}}" wx:key="index"
+    bindtap="navigateToInfo">
+    <!-- 放置图片 -->
+    <view class="card-img-box">
+      <image src="{{item.images}}" class="card-img" mode="widthFix" />
     </view>
-    <!-- 路线详细信息——具体路线细节 -->
-    <view class="time-item">
-      <view class="plan-item">
-        <view class="plan-item-title">
-          <text>当前项目：</text>
-          <text>清明上河园 </text>
-          <image class="card-star" src="./../../icon/星星.png" alt="" /><image class="card-star" src="./../../icon/星星.png" alt="" /><image class="card-star" src="./../../icon/星星.png" alt="" /><image class="card-star" src="./../../icon/星星.png" alt="" />
-        </view>
-        <view class="plan-item-position">
-          项目地点：开封市龙亭区龙亭西路5号  
-          <button class="position-btn"  type="primary" bindtap="test">到这里</button>
-        </view>
-        <view class="plan-item-time">
-          <text>预计游玩时长：</text>
-          <text>2-3小时</text>
-        </view>
-        <view class="plan-item-info">
-          <view class="plan-item-info-item">
-            <text>景点票价：</text>
-            <text>120元/人次（全价票）、60元/人次（半价票）</text>
-          </view>
-          <view class="plan-item-info-item">
-            虹桥：从东水门外七里曰虹桥，其桥无柱，皆以巨木虚架，饰以丹艧，宛如飞虹。——《东京梦华录•卷一•河道》
-          </view>
-          <view class="plan-item-info-item">
-            临水大殿：驾先幸池之临水殿锡燕群臣。殿前出水棚，排立仪卫。近殿水中，横列四彩舟，上有诸军百戏，如大旗、狮豹、棹刀、蛮牌、神鬼、杂剧之类。又列两船，皆乐部。
-          </view>
+    <!-- 放置文字信息 -->
+    <view class="card-info-box">
+      <view>
+        <view class="card-info-title">{{item.name}}</view>
+        <view class="card-info-content">{{item.introduction}}</view>
+        <view class="card-info-tips">
+          <van-button round type="primary" custom-style="display:inline" 
+          data-longitude="{{item.longitude}}"
+          data-latitude="{{item.latitude}}"
+          data-name="{{item.name}}"
+          bindtap="test">到这里去</van-button>
         </view>
       </view>
     </view>
   </view>
-  <!-- 会员功能 -->
-  <button type="warn" class="plan-refresh-btu">VIP路线监测</button>
-  <view class="plan-declaration">
-    <text>路线声明(VIP功能介绍等)</text>
+  <view class="snack-card">
+    <view class="snack-name">{{ plan.snackList[stepActive].name }}</view>
+    <view class="snack-info">
+      <view>月销量：<van-tag plain type="primary" size="medium">{{plan.snackList[stepActive].seasonSale}}</van-tag>
+      </view>
+      <view>
+        人均消费：<van-tag plain type="primary" size="medium">
+          {{plan.snackList[stepActive].averageSpend}}</van-tag>
+      </view>
+      <view>地址：{{plan.snackList[stepActive].position}}</view>
+    </view>
+    <view class="snack-daohang">
+      <van-button round type="primary" custom-style="display:inline"
+      data-name="{{plan.snackList[stepActive].name}}"
+      data-longitude="{{plan.snackList[stepActive].longitude}}"
+      data-latitude="{{plan.snackList[stepActive].latitude}}"
+      bindtap="test"
+      >到这里去</van-button>
+    </view>
   </view>
+  <view class="hotel-info-title">
+    <van-icon name="wap-home-o" color="#f64f59" />我的酒店
+  </view>
+  <view class="hotel-info-box">
+    <view class="hotel-name">{{ plan.candidateHotels[0].name }}</view>
+    <view class="hotel-info">
+      <view><van-tag plain type="primary">{{plan.candidateHotels[0].type}}</van-tag><van-tag plain type="primary">订单量{{plan.candidateHotels[0].sale}}</van-tag></view>
+      <view>大床房：<van-tag plain type="primary">¥{{plan.candidateHotels[0].doubleRoomPrice}}</van-tag></view>
+      <view>标准房：<van-tag plain type="primary">¥{{plan.candidateHotels[0].standardRoomPrice}}</van-tag></view>
+      <view>家庭房：<van-tag plain type="primary">¥{{plan.candidateHotels[0].familyRoomPrice}}</van-tag></view>
+      <view>地址：{{plan.candidateHotels[0].position}}</view>
+    </view>
+    <view class="hotel-daohang">
+      <van-button round type="primary" custom-style="display:inline"
+      data-name="{{plan.candidateHotels[0].name}}"
+      data-longitude="{{plan.candidateHotels[0].longitude}}"
+      data-latitude="{{plan.candidateHotels[0].latitude}}"
+      bindtap="test"
+      >到这里去</van-button>
+    </view>
+  </view>
+  <view class="back">
+    <button type="primary">返回首页</button>
+  </view>
+  
+  <view class="tail"></view>
 </view>

@@ -27,7 +27,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    
+
     // 首先获取所有的类型
   },
 
@@ -121,6 +121,10 @@ Page({
   },
   formSubmit: function (e) {
     console.log(e.detail.value);
+    wx.showLoading({
+      title: '正在订制旅行',
+      mask: true
+    })
     wx.getStorage({
       key: 'access-token',
     }).then(res => {
@@ -129,11 +133,12 @@ Page({
         method: "POST",
         data: e.detail.value,
         success(res) {
-          console.log('要求发送成功！')
+          console.log(res.data.status)
         }
       })
+      wx.hideLoading()
     })
-    
+
   },
   onInput(event) {
     this.setData({

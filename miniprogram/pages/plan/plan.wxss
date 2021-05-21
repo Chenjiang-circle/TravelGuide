@@ -1,89 +1,177 @@
-.plan-body {
-  background-color: #BBDEFB;
+.body {
+  background: #0052D4;
+  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #6FB1FC, #4364F7, #0052D4);
+  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #6FB1FC, #4364F7, #0052D4);
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
-.plan-title {
-  text-align: center;
-  padding-top: 20rpx;
+.next {
+  position: fixed;
+  right: 0rpx;
+  bottom: 300rpx;
+  z-index: 100;
+  border-radius: 20%;
 }
 
-.title {
-  font-size: x-large;
-  padding-bottom: 10rpx;
-  border-bottom: white solid 3rpx;
-}
-
-.plan-imgs {
-  margin-top: 20rpx;
-  display: flex;
-  justify-content: center;
-}
-
-.swipper-body {
-  width: 90%;
-  margin-top: 20rpx;
-}
-
-.swiper-img {
-  border-radius: 20rpx;
-}
-
-.plan-details {
-  margin-top: 40rpx;
-}
-.card-star {
-  display: inline-block;
-  width: 40rpx;
+.top-margin-box {
+  display: block;
   height: 40rpx;
 }
 
-.timeline {
-  margin-top: 30rpx;
+.title {
+  font-size: larger;
 }
 
-.time-item {
+.title-bottom {
+  margin-top: 20rpx;
+  display: block;
+  border-bottom: 2px #2196F3 solid;
+}
+
+.card1 {
   width: 90%;
-  margin-left: 4%;
-  padding: 1%;
-  border: 1px solid #CCCCCC;
-  border-radius: 20rpx;
-  box-shadow: 10rpx 10rpx 10rpx #cdcfcf;
-  margin-bottom: 40rpx;
-}
-
-.plan-refresh-btu {
-  margin-bottom: 30rpx;
-}
-
-.plan-declaration {
-  width: 80%;
-  background-color: #edebeb;
   margin-left: 5%;
-  border-radius: 20rpx;
-  font-size: smaller;
-  margin-bottom: 20rpx;
-  padding: 5%;
+  margin-top: 30rpx;
+  height: 400rpx;
+  background: #448AFF;
+  border-radius: 10rpx;
+  box-shadow: 0px 0px 10px #3a3a3a;
+  display: flex;
 }
 
-.plan-item-title {
-  margin-top: 15rpx;
+.card-img-box {
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card-info-box {
+  width: 50%;
+  display: flex;
+  align-items: center;
+  padding-right: 20rpx;
+}
+
+.card-img {
+  width: 80%;
+  border-radius: 15rpx;
+}
+
+.card-info-title {
+  font-size: medium;
+  color: #FFFFFF;
+}
+
+.card-info-content {
+  margin-top: 20rpx;
+  font-size: x-small;
+  color: #212121;
+  display: -webkit-box;
+  /* 表示几行后超出隐藏 */
+  -webkit-line-clamp: 4;
+  /* 超出隐藏 */
+  overflow: hidden;
+  /*超出显示为省略号*/
+  text-overflow: ellipsis;
+  -webkit-box-orient: vertical;
+  /*强制英文单词自动换行*/
+  word-break: break-all;
+}
+
+.card-info-tips {
+  margin-top: 20rpx;
+}
+
+.planItem-detail-title {
+  width: 90%;
+  margin-top: 20rpx;
+  margin-left: 5%;
+  font-size: medium;
+  display: flex;
+}
+
+.daohang {
+  display: inline;
+}
+
+.snack-card {
+  width: 90%;
+  margin-left: 5%;
+  margin-top: 40rpx;
+  background: #448AFF;
+  border-radius: 10rpx;
+  box-shadow: 0px 0px 10px #3a3a3a;
+  display: flex;
+  flex-direction: column;
+  padding-top: 30rpx;
+  padding-bottom: 30rpx;
+}
+
+.snack-name {
+  width: 80%;
+  margin-left: 10%;
+  color: white;
   font-size: large;
+  padding-bottom: 20rpx;
 }
 
-.plan-item-position {
+.snack-info {
+  width: 80%;
+  margin-left: 10%;
+}
+
+.snack-daohang {
+  width: 80%;
+  margin-left: 10%;
   margin-top: 20rpx;
 }
 
-.plan-item-time {
-  margin-top: 20rpx;
+.hotel-info-title {
+  margin-top: 30rpx;
+  width: 90%;
+  margin-left: 5%;
+  display: flex;
 }
 
-.plan-item-info {
-  margin-top: 20rpx;
+.hotel-info-box {
+  width: 90%;
+  margin-left: 5%;
+  display: flex;
+  flex-direction: column;
+  margin-top: 30rpx;
+  background: #448AFF;
+  border-radius: 10rpx;
+  box-shadow: 0px 0px 10px #3a3a3a;
+  padding-top: 20rpx;
+  padding-bottom: 20rpx;
 }
 
-.plan-item-info-item {
+.hotel-name {
+  width: 80%;
+  margin-left: 10%;
+  color: white;
+  font-size: large;
+  padding-bottom: 10rpx;
+}
+
+.hotel-info {
+  width: 80%;
+  margin-left: 10%;
+}
+
+.hotel-daohang {
   margin-top: 20rpx;
-  color: #AB8C40;
-  font-style: italic;
+  width: 80%;
+  margin-left: 10%;
+}
+
+.back {
+  margin-top: 20px;
+}
+
+.tail {
+  height: 50px;
 }

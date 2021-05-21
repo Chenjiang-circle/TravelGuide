@@ -1,5 +1,10 @@
 {
   "usingComponents": {
-    "timeAxis": "/components/timeAxis/timeAxis"
+    "van-row": "/components/dist/row/index",
+    "van-col": "/components/dist/col/index",
+    "van-steps": "/components/dist/steps/index",
+    "van-icon": "/components/dist/icon/index",
+    "van-button": "/components/dist/button/index",
+    "van-tag": "/components/dist/tag/index"
   }
 }

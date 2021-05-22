@@ -2,13 +2,16 @@
   <swiper autoplay="true" interval="3000" circular="true" class="swipper-body">
     <!-- 广告位 -->
     <swiper-item class="swiper-img">
-      <image src="http://wgl.kaifeng.gov.cn/data/upload/image/202104/2fb3cc402b2a177f80adace18ab7f307.png" mode="widthFix" />
+      <image src="http://wgl.kaifeng.gov.cn/data/upload/image/202104/2fb3cc402b2a177f80adace18ab7f307.png" mode="widthFix"
+      style="width:100%" />
     </swiper-item>
     <swiper-item class="swiper-img">
-      <image src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fimage.qqlyw.cn%2FAttachments%2Fjpeg%2F2017%2F08%2F04%2F5qafwjc1gem.jpeg&refer=http%3A%2F%2Fimage.qqlyw.cn&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1621486388&t=614e9149d0fbfb4086ae0341d7727331" mode="widthFix" />
+      <image src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fimage.qqlyw.cn%2FAttachments%2Fjpeg%2F2017%2F08%2F04%2F5qafwjc1gem.jpeg&refer=http%3A%2F%2Fimage.qqlyw.cn&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1621486388&t=614e9149d0fbfb4086ae0341d7727331" mode="widthFix"
+      style="width:100%" />
     </swiper-item>
     <swiper-item class="swiper-img">
-      <image src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fyouimg1.c-ctrip.com%2Ftarget%2F10030s000000hih1tD666.jpg&refer=http%3A%2F%2Fyouimg1.c-ctrip.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1621486444&t=60d33a62cadd43df0e5c516c8fb0f856" mode="widthFix" />
+      <image src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fyouimg1.c-ctrip.com%2Ftarget%2F10030s000000hih1tD666.jpg&refer=http%3A%2F%2Fyouimg1.c-ctrip.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1621486444&t=60d33a62cadd43df0e5c516c8fb0f856" mode="widthFix"
+      style="width:100%" />
     </swiper-item>
   </swiper>
   <!-- 推荐内容 -->

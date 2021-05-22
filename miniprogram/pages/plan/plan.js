@@ -289,58 +289,69 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    var _this = this
     // 获取plan
-
-    // 获取plan之后对plan进行操作，提取steps
-    var tmpStep = new Array()
-    var stepItem = {
-      text: "",
-      desc: ""
-    }
-    for (let index = 0; index < this.data.plan.planItems.length; index++) {
-      const planItem = this.data.plan.planItems[index];
-      stepItem = {}
-      // 生成当前小计划的标题
-      stepItem.text = '第' + (index + 1) + '晌'
-      const attractions = planItem.attractions
-      // 生成当前小计划的说明性文字
-      stepItem.desc = ""
-      for (let _index = 0; _index < attractions.length; _index++) {
-        const attraction = attractions[_index];
-        stepItem.desc = stepItem.desc + attraction.name + " "
+    // console.log(options.id)
+    wx.request({
+      url: 'http://localhost:8181/userPlan/getPlan/' + options.id,
+      method: "GET",
+      success(res) {
+        // console.log(res);
+        _this.setData({
+          plan: JSON.parse(res.data.object)
+        })
+        // 获取plan之后对plan进行操作，提取steps
+        var tmpStep = new Array()
+        var stepItem = {
+          text: "",
+          desc: ""
+        }
+        for (let index = 0; index < _this.data.plan.planItems.length; index++) {
+          const planItem = _this.data.plan.planItems[index];
+          stepItem = {}
+          // 生成当前小计划的标题
+          stepItem.text = '第' + (index + 1) + '晌'
+          const attractions = planItem.attractions
+          // 生成当前小计划的说明性文字
+          stepItem.desc = ""
+          for (let _index = 0; _index < attractions.length; _index++) {
+            const attraction = attractions[_index];
+            stepItem.desc = stepItem.desc + attraction.name + " "
+          }
+          stepItem.desc += _this.data.plan.snackList[index].name
+          tmpStep[index] = stepItem
+        }
+        _this.setData({
+          steps: tmpStep
+        })
+        // 生成景点的图片信息
+        var attractionImg = []
+        for (let index = 0; index < _this.data.plan.planItems.length; index++) {
+          const planItem = _this.data.plan.planItems[index];
+          var attractionImgItem = []
+          for (let _idnex = 0; _idnex < planItem.attractions.length; _idnex++) {
+            const attraction = planItem.attractions[_idnex];
+            attractionImgItem[_idnex] = _this.transforImgUrl(attraction.name, "attraction")
+          }
+          attractionImg[index] = attractionImgItem
+        }
+        _this.setData({
+          attractionsImg: attractionImg
+        })
+        // 生成酒店的图片信息
+        var hotelImg = []
+        var element = _this.data.plan.candidateHotels[_this.data.hotelIndex];
+        for (let index = 0; index < 2; index++) {
+          var url = _this.transforImgUrl(element.name, "hotel")
+          url = url.replace(/1.jpg/i, (index + 1) + ".jpg")
+          hotelImg[index] = url
+        }
+        _this.setData({
+          hotelImg: hotelImg
+        })
+        console.log(_this.data.hotelImg)
       }
-      stepItem.desc += this.data.plan.snackList[index].name
-      tmpStep[index] = stepItem
-    }
-    this.setData({
-      steps: tmpStep
     })
-    // 生成景点的图片信息
-    var attractionImg = []
-    for (let index = 0; index < this.data.plan.planItems.length; index++) {
-      const planItem = this.data.plan.planItems[index];
-      var attractionImgItem = []
-      for (let _idnex = 0; _idnex < planItem.attractions.length; _idnex++) {
-        const attraction = planItem.attractions[_idnex];
-        attractionImgItem[_idnex] = this.transforImgUrl(attraction.name, "attraction")
-      }
-      attractionImg[index] = attractionImgItem
-    }
-    this.setData({
-      attractionsImg: attractionImg
-    })
-    // 生成酒店的图片信息
-    var hotelImg = []
-    var element = this.data.plan.candidateHotels[this.data.hotelIndex];
-    for (let index = 0; index < 2; index++) {
-      var url = this.transforImgUrl(element.name, "hotel")
-      url = url.replace(/1.jpg/i, (index+1) + ".jpg")
-      hotelImg[index] = url
-    }
-    this.setData({
-      hotelImg: hotelImg
-    })
-    console.log(this.data.hotelImg)
   },
 
   /**

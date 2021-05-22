@@ -133,12 +133,28 @@ Page({
         method: "POST",
         data: e.detail.value,
         success(res) {
-          console.log(res.data.status)
+          console.log(res.data.object)
+          var id = res.data.object
+          wx.hideLoading()
+          wx.showModal({
+            title: '成功',
+            content: '订制旅行方案完成！',
+            confirmText: '前往查看',
+            cancelText: '留在此页',
+            success(res) {
+              if (res.confirm) {
+                var url = "/pages/plan/plan?id=" + id;
+                wx.navigateTo({
+                  url: url,
+                });
+              } else if (res.cancel) {
+                console.log('用户点击取消')
+              }
+            }
+          })
         }
       })
-      wx.hideLoading()
     })
-
   },
   onInput(event) {
     this.setData({

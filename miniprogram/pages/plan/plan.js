@@ -279,6 +279,10 @@ Page({
     },
     steps: [],
     stepActive: 0,
+    attractionsImg: [],
+    hotelImg: [],
+    snackImg: [],
+    hotelIndex: 0,
   },
 
   /**
@@ -286,6 +290,7 @@ Page({
    */
   onLoad: function (options) {
     // 获取plan
+
     // 获取plan之后对plan进行操作，提取steps
     var tmpStep = new Array()
     var stepItem = {
@@ -296,7 +301,7 @@ Page({
       const planItem = this.data.plan.planItems[index];
       stepItem = {}
       // 生成当前小计划的标题
-      stepItem.text = '第' + (index+1) + '晌'
+      stepItem.text = '第' + (index + 1) + '晌'
       const attractions = planItem.attractions
       // 生成当前小计划的说明性文字
       stepItem.desc = ""
@@ -310,6 +315,32 @@ Page({
     this.setData({
       steps: tmpStep
     })
+    // 生成景点的图片信息
+    var attractionImg = []
+    for (let index = 0; index < this.data.plan.planItems.length; index++) {
+      const planItem = this.data.plan.planItems[index];
+      var attractionImgItem = []
+      for (let _idnex = 0; _idnex < planItem.attractions.length; _idnex++) {
+        const attraction = planItem.attractions[_idnex];
+        attractionImgItem[_idnex] = this.transforImgUrl(attraction.name, "attraction")
+      }
+      attractionImg[index] = attractionImgItem
+    }
+    this.setData({
+      attractionsImg: attractionImg
+    })
+    // 生成酒店的图片信息
+    var hotelImg = []
+    var element = this.data.plan.candidateHotels[this.data.hotelIndex];
+    for (let index = 0; index < 2; index++) {
+      var url = this.transforImgUrl(element.name, "hotel")
+      url = url.replace(/1.jpg/i, (index+1) + ".jpg")
+      hotelImg[index] = url
+    }
+    this.setData({
+      hotelImg: hotelImg
+    })
+    console.log(this.data.hotelImg)
   },
 
   /**
@@ -377,10 +408,10 @@ Page({
       url: 'plugin://routePlan/index?key=' + key + '&referer=' + referer + '&endPoint=' + endPoint + '&mode=transit'
     });
   },
-  next(){
+  next() {
     var num = this.data.stepActive
-    console.log(num)
-    if(num == this.data.plan.planItems.length-1) {
+    // console.log(num)
+    if (num == this.data.plan.planItems.length - 1) {
 
     } else {
       num++;
@@ -388,5 +419,44 @@ Page({
         stepActive: num
       })
     }
+  },
+  pre() {
+    var num = this.data.stepActive
+    if (num == 0) {
+      // 如果当前激活状态是第一个，点击上一步就什么也不做
+    } else {
+      num--;
+      this.setData({
+        stepActive: num
+      })
+    }
+  },
+  /**
+   * 获取酒店、景点或小吃的图片地址
+   * @param {String} name 酒店或景点或小吃的名字
+   * @param {String} type name的类型，取值为：hotel/attraction/snack
+   */
+  transforImgUrl(name, type) {
+    // 获取景点或酒店或小吃的景点信息
+    var content = ''
+    switch (type) {
+      case "hotel":
+        content = "hotel-" + name + "1.jpg"
+        break;
+      case "attraction":
+        content = name + "1.jpg"
+        break;
+      case "snack":
+        content = "snack-" + name + "1.jpg";
+        break;
+      default:
+        break;
+    }
+    return 'http://localhost:80/travel/images/' + content;
+  },
+  goback() {
+    wx.switchTab({
+      url: '/pages/index/index'
+    })
   }
 })

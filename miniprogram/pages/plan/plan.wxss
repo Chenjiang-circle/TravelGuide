@@ -15,6 +15,14 @@
   border-radius: 20%;
 }
 
+.pre {
+  position: fixed;
+  right: 0rpx;
+  bottom: 400rpx;
+  z-index: 100;
+  border-radius: 20%;
+}
+
 .top-margin-box {
   display: block;
   height: 40rpx;
@@ -155,6 +163,10 @@
   color: white;
   font-size: large;
   padding-bottom: 10rpx;
+}
+
+.hotel-img-box {
+  align-items: center;
 }
 
 .hotel-info {

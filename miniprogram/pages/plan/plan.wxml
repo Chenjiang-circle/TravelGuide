@@ -1,5 +1,6 @@
 <view class="body">
   <button type="primary" class="next" size="mini" bindtap="next">下一步</button>
+  <button type="primary" class="pre" size="mini" bindtap="pre">上一步</button>
   <van-row>
     <van-col span="24">
       <div class="top-margin-box"></div>
@@ -22,7 +23,7 @@
     bindtap="navigateToInfo">
     <!-- 放置图片 -->
     <view class="card-img-box">
-      <image src="{{item.images}}" class="card-img" mode="widthFix" />
+      <image src="{{attractionsImg[stepActive][index]}}" class="card-img" mode="widthFix" />
     </view>
     <!-- 放置文字信息 -->
     <view class="card-info-box">
@@ -30,11 +31,8 @@
         <view class="card-info-title">{{item.name}}</view>
         <view class="card-info-content">{{item.introduction}}</view>
         <view class="card-info-tips">
-          <van-button round type="primary" custom-style="display:inline" 
-          data-longitude="{{item.longitude}}"
-          data-latitude="{{item.latitude}}"
-          data-name="{{item.name}}"
-          bindtap="test">到这里去</van-button>
+          <van-button round type="primary" custom-style="display:inline" data-longitude="{{item.longitude}}"
+            data-latitude="{{item.latitude}}" data-name="{{item.name}}" bindtap="test">到这里去</van-button>
         </view>
       </view>
     </view>
@@ -51,12 +49,9 @@
       <view>地址：{{plan.snackList[stepActive].position}}</view>
     </view>
     <view class="snack-daohang">
-      <van-button round type="primary" custom-style="display:inline"
-      data-name="{{plan.snackList[stepActive].name}}"
-      data-longitude="{{plan.snackList[stepActive].longitude}}"
-      data-latitude="{{plan.snackList[stepActive].latitude}}"
-      bindtap="test"
-      >到这里去</van-button>
+      <van-button round type="primary" custom-style="display:inline" data-name="{{plan.snackList[stepActive].name}}"
+        data-longitude="{{plan.snackList[stepActive].longitude}}"
+        data-latitude="{{plan.snackList[stepActive].latitude}}" bindtap="test">到这里去</van-button>
     </view>
   </view>
   <view class="hotel-info-title">
@@ -64,25 +59,35 @@
   </view>
   <view class="hotel-info-box">
     <view class="hotel-name">{{ plan.candidateHotels[0].name }}</view>
+    <view class="hotel-img-box">
+      <swiper autoplay="true" interval="4000" duration="1000">
+        <swiper-item wx:for="{{hotelImg}}" wx:key="index">
+          <image src="{{item}}" mode="aspectFit" style="width:100%" />
+        </swiper-item>
+      </swiper>
+    </view>
     <view class="hotel-info">
-      <view><van-tag plain type="primary">{{plan.candidateHotels[0].type}}</van-tag><van-tag plain type="primary">订单量{{plan.candidateHotels[0].sale}}</van-tag></view>
-      <view>大床房：<van-tag plain type="primary">¥{{plan.candidateHotels[0].doubleRoomPrice}}</van-tag></view>
-      <view>标准房：<van-tag plain type="primary">¥{{plan.candidateHotels[0].standardRoomPrice}}</van-tag></view>
-      <view>家庭房：<van-tag plain type="primary">¥{{plan.candidateHotels[0].familyRoomPrice}}</van-tag></view>
+      <view>
+        <van-tag plain type="primary">{{plan.candidateHotels[0].type}}</van-tag>
+        <van-tag plain type="primary">订单量{{plan.candidateHotels[0].sale}}</van-tag>
+      </view>
+      <view>大床房：<van-tag plain type="primary">¥{{plan.candidateHotels[0].doubleRoomPrice}}</van-tag>
+      </view>
+      <view>标准房：<van-tag plain type="primary">¥{{plan.candidateHotels[0].standardRoomPrice}}</van-tag>
+      </view>
+      <view>家庭房：<van-tag plain type="primary">¥{{plan.candidateHotels[0].familyRoomPrice}}</van-tag>
+      </view>
       <view>地址：{{plan.candidateHotels[0].position}}</view>
     </view>
     <view class="hotel-daohang">
-      <van-button round type="primary" custom-style="display:inline"
-      data-name="{{plan.candidateHotels[0].name}}"
-      data-longitude="{{plan.candidateHotels[0].longitude}}"
-      data-latitude="{{plan.candidateHotels[0].latitude}}"
-      bindtap="test"
-      >到这里去</van-button>
+      <van-button round type="primary" custom-style="display:inline" data-name="{{plan.candidateHotels[0].name}}"
+        data-longitude="{{plan.candidateHotels[0].longitude}}" data-latitude="{{plan.candidateHotels[0].latitude}}"
+        bindtap="test">到这里去</van-button>
     </view>
   </view>
   <view class="back">
-    <button type="primary">返回首页</button>
+    <button type="primary" bindtap="goback">返回首页</button>
   </view>
-  
+
   <view class="tail"></view>
 </view>

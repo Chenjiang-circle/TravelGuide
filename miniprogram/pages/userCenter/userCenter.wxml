@@ -10,7 +10,7 @@
       <van-tag mark type="primary" size="large">我的旅行计划</van-tag>
     </view>
     <view class="plan-cards" wx:if="{{planList.length > 0}}">
-      <view class="plan-card" wx:for="{{planList}}" wx:key="index">
+      <view class="plan-card" wx:for="{{planList}}" wx:key="index" data-id="{{planIdList[index]}}" bindtap="gotoPlan">
         <view class="plan-item plan-title">
           {{item.title}}
         </view>

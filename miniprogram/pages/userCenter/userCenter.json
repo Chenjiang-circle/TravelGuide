@@ -1,3 +1,6 @@
 {
-  "usingComponents": {}
+  "usingComponents": {
+    "van-image": "/components/dist/image/index",
+    "van-tag": "/components/dist/tag/index"
+  }
 }

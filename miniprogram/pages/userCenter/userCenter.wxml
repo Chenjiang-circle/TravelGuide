@@ -1,37 +1,35 @@
-<view class="mine-wrapper">
-  <view class="avatar-wrapper">
-    <view>
-      <view class="avatar">
-        <image style="border-radius:50%;" src="{{userInfo.avatarUrl ? userInfo.avatarUrl:'/icon/用户.png'}}"></image>
-      </view>
-      <view class="text">
-        <text wx:if="{{userInfo.nickName}}">{{userInfo.nickName}}</text>
-        <text wx:else bindtap="toLogin">注册 / 登录</text>
-      </view>
-      <view class="text">
-        <text wx:if="{{userSign==2}}">{{"您还没有填写真实信息,请填写"}}</text>
-        <text wx:elif="{{userSign==1}}">{{"会员用户"}}</text>
-      </view>
+<view class="body">
+  <view class="avatar-box">
+    <view class="avatar">
+      <van-image fit="cover" round width="5rem" height="5rem" src="{{userInfo.avatarUrl}}" />
     </view>
+    <view class="nick-name">{{userInfo.nickName}}</view>
   </view>
-  <view class="list-wrapper">
-    <view class="alllists">
-      <block wx:for="{{menuitems}}" wx:key="menu_for">
-        <navigator url="{{item.url}}" class="lists">
-        <view class='content'>
-          <view class="listimg">
-            <image src="{{item.icon}}"></image>
-          </view>
-          <view class="listtext">{{item.text}}</view>
-          <view class="listicon">{{item.tips}}</view>
-          <view class="arrows">
-            <image src="{{item.arrows}}"></image>
-          </view>
+  <view class="plan-list">
+    <view class="plan-list-title">
+      <van-tag mark type="primary" size="large">我的旅行计划</van-tag>
+    </view>
+    <view class="plan-cards" wx:if="{{planList.length > 0}}">
+      <view class="plan-card" wx:for="{{planList}}" wx:key="index">
+        <view class="plan-item plan-title">
+          {{item.title}}
         </view>
-        </navigator>
-        <!-- 分割线 -->
-        <view class="divLine"></view>
-      </block>
+        <view class="plan-item plan-labels">
+          <span wx:for="{{item.labels}}" wx:key="index">
+            <van-tag plain type="primary">{{item}}</van-tag>
+          </span>
+        </view>
+      </view>
+    </view>
+    <view class="plan-cards" wx:if="{{planList.length == 0}}">
+      <view class="plan-card" >
+        <view class="plan-item plan-title">
+          您还没有自己的旅行计划，快去免费订制吧！
+        </view>
+        <button type="primary" bindtap="goToUerCustom">前往订制</button>
+      </view>
     </view>
   </view>
+  <view class="vip"></view>
+  <view class="tail"></view>
 </view>

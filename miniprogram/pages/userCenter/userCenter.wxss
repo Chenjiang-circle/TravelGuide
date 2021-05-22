@@ -1,47 +1,64 @@
-/* pages/userCenter/userCenter.wxss */
-.avatar-wrapper {
-  background: #1b82d1;
-  padding: 25px 0;
-}
- 
-.avatar-wrapper .avatar {
-  margin: 0 auto;
-  text-align: center;
-}
- 
-.avatar-wrapper .avatar image {
-  width: 100px;
-  height: 100px;
-}
- 
-.avatar-wrapper .text {
-  text-align: center;
-  color: #fff;
-}
- 
-.listimg image {
-  margin-right: 5px;
-  vertical-align: middle;
-  width: 20px;
-  height: 20px;
-}
- 
-.content{
+.body {
+  width: 100%;
   display: flex;
-  margin-top: 10px;
-  margin-bottom: 10px;
+  flex-direction: column;
 }
- 
-/*分割线样式*/
-.divLine{
- background: #E0E3DA;
- width: 100%;
- height: 5rpx;
+
+.avatar-box {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #1488CC;
+  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #2B32B2, #1488CC);
+  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #2B32B2, #1488CC);
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  padding-top: 50rpx;
+  padding-bottom: 50rpx;
 }
- 
-.arrows image {
-  vertical-align: middle;
-  width: 15px;
-  height: 15px;
-  margin-left: 500rpx;
+
+.avatar {
+  width: auto;
+  margin-bottom: 20rpx;
+}
+
+.plan-list {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20rpx;
+}
+
+.plan-list-title {
+  width: 80%;
+}
+
+.plan-cards {
+  width: 80%;
+  margin-top: 20rpx;
+}
+
+.plan-card {
+  width: 100%;
+  box-shadow: 0 0 10px black;
+  border-radius: 10rpx;
+  margin-bottom: 20rpx;
+  background: #1A2980;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #26D0CE, #1A2980);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #26D0CE, #1A2980); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  padding-bottom: 20rpx;
+  padding-top: 20rpx;
+}
+
+.plan-item {
+  margin-left: 20rpx;
+  margin-right: 20rpx;
+}
+
+.plan-title {
+  color: white;
+  font-size: large;
 }
